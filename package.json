@@ -1,0 +1,28 @@
+{
+  "name": "@indra.ai/securitydeva",
+  "version": "0.0.3",
+  "author": "Quinn Michaels",
+  "license": "MIT",
+  "copyright": "2023",
+  "description": "The Support Deva",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/indraai/SupportDeva.git"
+  },
+  "keywords": [
+    "Support",
+    "Deva",
+    "deva.world"
+  ],
+  "bugs": {
+    "url": "https://github.com/indraai/SupportDeva/issues"
+  },
+  "homepage": "https://github.com/indraai/SupportDeva#readme",
+  "dependencies": {
+    "@indra.ai/deva": "^1.1.41"
+  }
+}

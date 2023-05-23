@@ -5,17 +5,17 @@ p:Copyright (c)2023 Quinn Michaels
 p:This is the main help file for Support Deva. Providing support to deva.world.
 
 id: 2830544070479
-key: SupportDeva
+key: support
 name: Support Deva
 describe: Providing support to deva.world.
 
 ### Methods
 
-cmd:#SupportDeva uid
+cmd:#support uid
 p:Generate a unique id from the Support Deva.
 
-cmd:##SupportDeva status
+cmd:#support status
 p:Return the status for the Support Deva.
 
-cmd:##SupportDeva help
+cmd:#support help
 p:Get help using the Support Deva

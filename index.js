@@ -95,7 +95,6 @@ const SUPPORT = new Deva({
     }
   },
   onDone(data) {
-
     this.listen('devacore:question', packet => {
       if (packet.q.text.includes(this.vars.trigger)) return this.func.sup_question(packet);
     });
@@ -103,6 +102,6 @@ const SUPPORT = new Deva({
       if (packet.a.text.includes(this.vars.trigger)) return this.func.sup_answer(packet);
     });
     return Promise.resolve(data);
-  }
+  },
 });
 module.exports = SUPPORT

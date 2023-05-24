@@ -48,7 +48,7 @@ const SUPPORT = new Deva({
     sup_question(packet) {
       const agent = this.agent();
       const support = this.support();
-      support.personal.answers.push(packet);
+      support.personal.questions.push(packet);
     },
     sup_answer(packet) {
       const agent = this.agent();

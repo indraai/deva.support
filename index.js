@@ -44,7 +44,18 @@ const SUPPORT = new Deva({
   listeners: {},
   modules: {},
   deva: {},
-  func: {},
+  func: {
+    sup_question(packet) {
+      const agent = this.agent();
+      const support = this.support();
+      support.personal.answers.push(packet);
+    },
+    sup_answer(packet) {
+      const agent = this.agent();
+      const support = this.support();
+      support.personal.answers.push(packet);
+    },
+  },
   methods: {
     /**************
     method: uid
@@ -83,5 +94,15 @@ const SUPPORT = new Deva({
       });
     }
   },
+  onDone(data) {
+
+    this.listen('devacore:question', packet => {
+      if (packet.q.text.includes(this.vars.trigger)) return this.func.sup_question(packet);
+    });
+    this.listen('devacore:answer', packet => {
+      if (packet.a.text.includes(this.vars.trigger)) return this.func.sup_answer(packet);
+    });
+    return Promise.resolve(data);
+  }
 });
 module.exports = SUPPORT

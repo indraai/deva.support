@@ -46,7 +46,7 @@
         "error": "💣 ERROR!"
       },
       "trigger": "@SUPPORT",
-      "chat": "api",
+      "route": "api",
       "routes": {
         "api": {
           "cmd": "#open chat",
@@ -69,7 +69,8 @@
           "end": "::END:FOOTER"
         },
         "content": {
-          "sig": "Sincerely,\n@Support",
+          "greeting": "#docs view devas/support/main:greeting",
+          "signature": "#docs view devas/support/main:signature",
           "begin": "::BEGIN:SUPPORT",
           "end": "::END:SUPPORT"
         }

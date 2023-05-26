@@ -47,16 +47,6 @@
       },
       "trigger": "@SUPPORT",
       "route": "api",
-      "routes": {
-        "api": {
-          "cmd": "#open chat",
-          "greeting": "Greetings @api,"
-        },
-        "ui": {
-          "cmd": "#puppet chat",
-          "greeting": "Hello @ui,"
-        }
-      },
       "template": {
         "header": {
           "call": "#docs view devas/support/main:header",
@@ -64,7 +54,7 @@
           "end": "::END:HEADER"
         },
         "footer": {
-          "call": "#docs view devas/support/main:footer",
+          "call": "#docs view devas/main:footer",
           "begin": "::BEGIN:FOOTER",
           "end": "::END:FOOTER"
         },

@@ -45,7 +45,35 @@
         "done": "🟣 DONE",
         "error": "💣 ERROR!"
       },
-      "trigger": "@SUPPORT"
+      "trigger": "@SUPPORT",
+      "chat": "api",
+      "routes": {
+        "api": {
+          "cmd": "#open chat",
+          "greeting": "Greetings @api,"
+        },
+        "ui": {
+          "cmd": "#puppet chat",
+          "greeting": "Hello @ui,"
+        }
+      },
+      "template": {
+        "header": {
+          "call": "#docs view devas/support/main:header",
+          "begin": "::BEGIN:HEADER",
+          "end": "::END:HEADER"
+        },
+        "footer": {
+          "call": "#docs view devas/support/main:footer",
+          "begin": "::BEGIN:FOOTER",
+          "end": "::END:FOOTER"
+        },
+        "content": {
+          "sig": "Sincerely,\n@Support",
+          "begin": "::BEGIN:SUPPORT",
+          "end": "::END:SUPPORT"
+        }
+      }
     }
   }
 }

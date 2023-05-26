@@ -55,8 +55,60 @@ const SUPPORT = new Deva({
       const support = this.support();
       support.personal.answers.push(packet);
     },
+    async template(packet) {
+      const agent = this.agent();
+      const header = await this.question(this.vars.template.header.call);
+      const footer = await this.question(this.vars.template.footer.call);
+      return [
+        `${this.vars.template.header.begin}:${header.id}`,
+        header.a.text,
+        `${this.vars.template.header.end}:${this.hash(header.a.text)}`,
+        '',
+        `${this.vars.template.content.begin}:${packet.id}`,
+        '',
+        this.vars.routes[this.vars.chat].greeting,
+        '',
+        packet.q.text,
+        '',
+        this.vars.template.content.sig,
+        '',
+        `${this.vars.template.content.end}:${this.hash(packet.q.text)}`,
+        '',
+        `${this.vars.template.footer.begin}${footer.id}`,
+        footer.a.text,
+        `${this.vars.template.footer.end}:${this.hash(footer.a.text)}`,
+      ].join('\n');
+    },
+    async chat(packet) {
+      if (packet.q.meta.params[1]) this.vars.chat = packet.q.meta.params[1];
+      const route = this.vars.routes[this.vars.chat].cmd;
+      const question = await this.func.template(packet);
+
+      return new Promise((resolve, reject) => {
+        if (!packet.q.text) return reject(this._messages.notext);
+        this.question(`${route} ${question}`).then(answer => {
+          return this.question(`#feecting parse ${answer.a.text}`);
+        }).then(parsed => {
+          return resolve({
+            text: parsed.a.text,
+            html: parsed.a.html,
+            data: parsed.a.data,
+          });
+        }).catch(err => {
+          return this.error(err, packet, reject);
+        });
+      });
+    }
   },
   methods: {
+    /**************
+    func: chat
+    params: packet
+    describe: The chat relay interface to talk with the @api and @ui
+    ***************/
+    chat(packet) {
+      return this.func.chat(packet);
+    },
     /**************
     method: uid
     params: packet

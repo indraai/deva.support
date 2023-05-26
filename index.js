@@ -56,12 +56,10 @@ const SUPPORT = new Deva({
     sup_question(packet) {
       const agent = this.agent();
       const support = this.support();
-      support.personal.questions.push(packet);
     },
     sup_answer(packet) {
       const agent = this.agent();
       const support = this.support();
-      support.personal.answers.push(packet);
     },
     async template(packet, route) {
       const agent = this.agent();
@@ -82,7 +80,6 @@ const SUPPORT = new Deva({
       const footer_hash = this.hash(footer_parsed);
       const message_parsed = this._agent.parse(message, route);
       const message_hash = this.hash(message_parsed)
-
       const template = [
         `${this.vars.template.header.begin}:${header.id}`,
         header_parsed,

@@ -135,7 +135,6 @@ const SUPPORT = new Deva({
       this.contect('uid');
       return Promise.resolve({text:this.uid()});
     },
-
     /**************
     method: status
     params: packet
@@ -145,7 +144,6 @@ const SUPPORT = new Deva({
       this.context('status');
       return Promise.resolve(this.status());
     },
-
     /**************
     method: help
     params: packet

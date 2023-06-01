@@ -1,21 +1,30 @@
-## Support Deva
+image: ::agent_avatar::
 
-p:Copyright (c)2023 Quinn Michaels
+## Support Deva Help
 
-p:This is the main help file for Support Deva. Providing support to deva.world.
+p:This is the main help file for Support Deva. :describe:
 
-id: 2830544070479
-key: support
-name: Support Deva
-describe: Providing support to deva.world.
+id: ::agent_id::
+key: #::agent_key::
+name: ::agent_name::
+emoji: ::agent_emoji::
+describe: ::agent_describe::
 
 ### Methods
 
-cmd:#support uid
+cmd:#security uid
 p:Generate a unique id from the Support Deva.
 
-cmd:#support status
+cmd:#security status
 p:Return the status for the Support Deva.
 
-cmd:#support help
+cmd:#security help
 p:Get help using the Support Deva
+
+---
+
+#color = ::agent_color::
+#bgcolor = ::agent_bgcolor::
+#bg = ::agent_background::
+
+copyright: (c)2023 Quinn Michaels

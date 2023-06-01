@@ -31,7 +31,6 @@ const SUPPORT = new Deva({
     key: agent.key,
     describe: agent.describe,
     prompt: agent.prompt,
-    voice: agent.voice,
     profile: agent.profile,
     translate(input) {
       return input.trim();
@@ -53,14 +52,8 @@ const SUPPORT = new Deva({
   modules: {},
   deva: {},
   func: {
-    sup_question(packet) {
-      const agent = this.agent();
-      const support = this.support();
-    },
-    sup_answer(packet) {
-      const agent = this.agent();
-      const support = this.support();
-    },
+    sup_question(packet) {return;},
+    sup_answer(packet) {return;},
     async template(packet, route) {
       const agent = this.agent();
       const header = await this.question(this.vars.template.header.call);
@@ -136,6 +129,7 @@ const SUPPORT = new Deva({
     describe: Return a system id to the user from the :name:.
     ***************/
     uid(packet) {
+      this.contect('uid');
       return Promise.resolve({text:this.uid()});
     },
 
@@ -145,7 +139,8 @@ const SUPPORT = new Deva({
     describe: Return the current status of the :name:.
     ***************/
     status(packet) {
-      return this.status();
+      this.context('status');
+      return Promise.resolve(this.status());
     },
 
     /**************
@@ -154,6 +149,7 @@ const SUPPORT = new Deva({
     describe: The Help method returns the information on how to use the :name:.
     ***************/
     help(packet) {
+      this.context('help');
       return new Promise((resolve, reject) => {
         this.lib.help(packet.q.text, __dirname).then(help => {
           return this.question(`#feecting parse ${help}`);

@@ -11,14 +11,14 @@
         "text": "support",
         "colors": {
           "label": {
-            "R": 253,
-            "G": 102,
-            "B": 155
+            "R": 251,
+            "G": 100,
+            "B": 253
           },
           "text": {
-            "R": 253,
-            "G": 102,
-            "B": 155
+            "R": 252,
+            "G": 155,
+            "B": 253
           }
         }
       },
@@ -32,6 +32,8 @@
         "emoji": "/public/devas/deva/emoji.png",
         "avatar": "/public/devas/deva/avatar.png",
         "background": "/public/devas/deva/background.png",
+        "color": "#fc9bfd",
+        "bgcolor": "#1e0e1e",
         "gender": "male"
       }
     },
@@ -46,7 +48,11 @@
         "error": "💣 ERROR!"
       },
       "trigger": "@SUPPORT",
-      "route": "api",
+      "context": {
+        "uid": "Support Deva is making a uid",
+        "status": "Support Deva is returning a status",
+        "help": "Support Deva is asking for help"
+      },
       "template": {
         "header": {
           "call": "#docs view devas/support/main:header",

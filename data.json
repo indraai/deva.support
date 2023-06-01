@@ -22,10 +22,6 @@
           }
         }
       },
-      "voice": {
-        "speech": "Joey",
-        "speed": 1
-      },
       "profile": {
         "name": "Support Deva",
         "describe": "The Support Deva",
@@ -34,7 +30,8 @@
         "background": "/public/devas/deva/background.png",
         "color": "#fc9bfd",
         "bgcolor": "#1e0e1e",
-        "gender": "male"
+        "gender": "deva",
+        "voice": "Joey"
       }
     },
     "vars": {

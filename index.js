@@ -45,6 +45,9 @@ const SUPPORT = new Deva({
         output = output.replace(key, value);
       }
       return output.trim();
+    },
+    process(input) {
+      return input.trim();
     }
   },
   vars,
@@ -151,7 +154,7 @@ const SUPPORT = new Deva({
     help(packet) {
       this.context('help');
       return new Promise((resolve, reject) => {
-        this.lib.help(packet.q.text, __dirname).then(help => {
+        this.help(packet.q.text, __dirname).then(help => {
           return this.question(`#feecting parse ${help}`);
         }).then(parsed => {
           return resolve({

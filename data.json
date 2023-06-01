@@ -25,9 +25,9 @@
       "profile": {
         "name": "Support Deva",
         "describe": "The Support Deva",
-        "emoji": "/public/devas/deva/emoji.png",
-        "avatar": "/public/devas/deva/avatar.png",
-        "background": "/public/devas/deva/background.png",
+        "emoji": "/public/devas/support/emoji.png",
+        "avatar": "/public/devas/support/avatar.png",
+        "background": "/public/devas/support/background.png",
         "color": "#fc9bfd",
         "bgcolor": "#1e0e1e",
         "gender": "deva",

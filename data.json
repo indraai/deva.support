@@ -49,24 +49,6 @@
         "uid": "Support Deva is making a uid",
         "status": "Support Deva is returning a status",
         "help": "Support Deva is asking for help"
-      },
-      "template": {
-        "header": {
-          "call": "#docs view devas/support/main:header",
-          "begin": "::BEGIN:HEADER",
-          "end": "::END:HEADER"
-        },
-        "footer": {
-          "call": "#docs view devas/main:footer",
-          "begin": "::BEGIN:FOOTER",
-          "end": "::END:FOOTER"
-        },
-        "content": {
-          "greeting": "#docs view devas/support/main:greeting",
-          "signature": "#docs view devas/support/main:signature",
-          "begin": "::BEGIN:SUPPORT",
-          "end": "::END:SUPPORT"
-        }
       }
     }
   }

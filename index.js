@@ -1,11 +1,8 @@
 // Copyright (c)2023 Quinn Michaels
 // Support Deva
 // Support Deva manages the support eatures of deva.world.
-
-
 const fs = require('fs');
 const path = require('path');
-
 const package = require('./package.json');
 const info = {
   id: package.id,
@@ -29,7 +26,6 @@ const SUPPORT = new Deva({
   agent: {
     id: agent.id,
     key: agent.key,
-    describe: agent.describe,
     prompt: agent.prompt,
     profile: agent.profile,
     translate(input) {
@@ -66,7 +62,7 @@ const SUPPORT = new Deva({
     ***************/
     uid(packet) {
       this.contect('uid');
-      return Promise.resolve({text:this.uid()});
+      return Promise.resolve(this.uid());
     },
     /**************
     method: status

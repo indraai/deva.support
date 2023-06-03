@@ -114,12 +114,8 @@ const SUPPORT = new Deva({
     }
   },
   onDone(data) {
-    this.listen('devacore:question', packet => {
-      if (packet.q.text.includes(this.vars.trigger)) return this.func.sup_question(packet);
-    });
-    this.listen('devacore:answer', packet => {
-      if (packet.a.text.includes(this.vars.trigger)) return this.func.sup_answer(packet);
-    });
+    this.listen('devacore:question', this.func.sup_question);
+    this.listen('devacore:answer', this.func.sup_answer);
     return Promise.resolve(data);
   },
 });

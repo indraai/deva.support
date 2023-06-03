@@ -56,6 +56,26 @@ const SUPPORT = new Deva({
   },
   methods: {
     /**************
+    method: issue
+    params: packet
+    describe: create a new issue for the main deva.world through github agent.
+    ***************/
+    issue(packet) {
+      const agent = this.agent();
+      return new Promise((resolve, reject) => {
+        this.question(`#github issue:${agent.key} ${packet.q.text}`).then(issue => {
+          return resolve({
+            text: issue.a.text,
+            html: issue.a.html,
+            data: issue.a.data,
+          })
+        }).catch(err => {
+          return this.error(err, packet, reject);
+        });
+      });
+    },
+
+    /**************
     method: uid
     params: packet
     describe: Return a system id to the user from the :name:.

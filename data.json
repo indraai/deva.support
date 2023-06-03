@@ -46,9 +46,12 @@
       },
       "trigger": "@SUPPORT",
       "context": {
-        "uid": "Support Deva is making a uid",
-        "status": "Support Deva is returning a status",
-        "help": "Support Deva is asking for help"
+        "uid": "generating uid",
+        "status": "getting status",
+        "info": "getting info",
+        "feature": "accessing feature",
+        "issue": "has issues",
+        "help": "asking for help"
       }
     }
   }

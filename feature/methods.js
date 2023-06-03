@@ -5,6 +5,7 @@ module.exports = {
   describe: The global support feature that installs with every agent
   ***************/
   support(packet) {
+    this.context('feature');
     const support = this.support();
     const data = {};
     return new Promise((resolve, reject) => {
@@ -30,7 +31,7 @@ module.exports = {
       })
     });
   },
-  
+
   /**************
   method: status
   params: packet
@@ -38,6 +39,7 @@ module.exports = {
   ***************/
   status(packet) {
     this.context('status');
+    this.feature('support');
     return Promise.resolve(this.status());
   },
   /**************
@@ -46,6 +48,8 @@ module.exports = {
   describe: Return the current info for the deva.
   ***************/
   info(packet) {
+    this.context('info');
+    this.feature('support');
     return Promise.resolve(this.info);
   },
   /**************
@@ -54,6 +58,8 @@ module.exports = {
   describe: create a new issue for the main deva.world through github agent.
   ***************/
   issue(packet) {
+    this.context('issue');
+    this.feature('support');
     return new Promise((resolve, reject) => {
       this.question(`#github create_issue:${packet.q.agent.key} ${packet.q.text}`).then(issue => {
         return resolve({
@@ -73,6 +79,7 @@ module.exports = {
   ***************/
   help(packet) {
     this.context('help');
+    this.feature('support');
     const {dir} = this.info();
     console.log('INFO', this.info());
     return new Promise((resolve, reject) => {

@@ -44,6 +44,10 @@
         "done": "🟣 DONE",
         "error": "💣 ERROR!"
       },
+      "live": {
+        "profile": "support",
+        "history": []
+      },
       "trigger": "@SUPPORT",
       "context": {
         "uid": "generating uid",

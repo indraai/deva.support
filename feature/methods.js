@@ -38,8 +38,6 @@ module.exports = {
   describe: Return the current status of the Log Buddy.
   ***************/
   status(packet) {
-    this.context('status');
-    this.feature('support');
     return Promise.resolve(this.status());
   },
   /**************
@@ -48,29 +46,7 @@ module.exports = {
   describe: Return the current info for the deva.
   ***************/
   info(packet) {
-    this.context('info');
-    this.feature('support');
     return Promise.resolve(this.info);
-  },
-  /**************
-  method: issue
-  params: packet
-  describe: create a new issue for the main deva.world through github agent.
-  ***************/
-  issue(packet) {
-    this.context('issue');
-    this.feature('support');
-    return new Promise((resolve, reject) => {
-      this.question(`#github create_issue:${packet.q.agent.key} ${packet.q.text}`).then(issue => {
-        return resolve({
-          text: issue.a.text,
-          html: issue.a.html,
-          data: issue.a.data,
-        })
-      }).catch(err => {
-        return this.error(err, packet, reject);
-      });
-    });
   },
   /**************
   method: help
@@ -78,14 +54,14 @@ module.exports = {
   describe: The Help method returns the information on how to use the Log Buddy.
   ***************/
   help(packet) {
-    this.context('help');
-    this.feature('support');
+    this.zone('support');
     const {dir} = this.info();
-    console.log('INFO', this.info());
     return new Promise((resolve, reject) => {
+      this.state('help');
       this.help(packet.q.text, dir).then(help => {
         return this.question(`#feecting parse ${help}`);
       }).then(parsed => {
+        this.action('help');
         return resolve({
           text: parsed.a.text,
           html: parsed.a.html,

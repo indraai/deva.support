@@ -48,6 +48,10 @@
         "profile": "support",
         "history": []
       },
+      "say": {
+        "profile": "support",
+        "history": []
+      },
       "trigger": "@SUPPORT",
       "context": {
         "uid": "generating uid",

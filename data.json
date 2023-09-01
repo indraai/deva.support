@@ -50,6 +50,7 @@
       },
       "say": {
         "profile": "support",
+        "discord": "support",
         "history": []
       },
       "trigger": "@SUPPORT",

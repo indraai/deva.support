@@ -46,11 +46,17 @@
       },
       "live": {
         "profile": "support",
+        "max_tokens": 35,
         "history": []
       },
       "say": {
         "profile": "support",
-        "discord": "support",
+        "max_tokens": 500,
+        "history": []
+      },
+      "reply": {
+        "profile": "support",
+        "max_tokens": 250,
         "history": []
       },
       "trigger": "@SUPPORT",

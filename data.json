@@ -4,34 +4,53 @@
   "copyright": "Copyright (c)2023 Quinn Michaels. All rights reserved.",
   "DATA": {
     "agent": {
-      "id": 2830544070479,
+      "id": 3827247053551,
       "key": "support",
+      "model": "ft:gpt-3.5-turbo-0613:indra-ai::8DlRY87Q",
       "prompt": {
         "emoji": "💼",
-        "text": "support",
+        "text": "Support",
         "colors": {
           "label": {
-            "R": 251,
-            "G": 100,
-            "B": 253
+            "R": 98,
+            "G": 186,
+            "B": 94
           },
           "text": {
-            "R": 252,
-            "G": 155,
-            "B": 253
+            "R": 137,
+            "G": 191,
+            "B": 197
           }
         }
       },
       "profile": {
+        "identity": "You are #SupportDEVA in deva.world.",
+        "invoke": "#SupportDEVA of deva.world",
         "name": "Support Deva",
-        "describe": "The Support Deva",
+        "mention": "@SupportDEVA",
+        "tags": "#Support #SupportDEVA",
+        "pronouns": "Deva",
+        "creator": "Quinn Michaels",
+        "created": "Monday, May 22, 2023 at 9:49 AM",
+        "house": "House Deva",
+        "temple": "Kedarnath Temple (Vadari)",
+        "forest": "Pushkara",
+        "city": "Amaravati",
+        "region": "Svarga",
+        "land": "Visisipra",
+        "planet": "Arjika",
+        "loka": "Devaloka",
+        "verse": "Rikverse",
+        "system": "deva.world",
+        "agency": "indra.agency",
+        "describe": "The Support Deva provides the essential tools and resources to support the deva.world multi-agent system. Wether it's helping users learn systems, or resolving issues that may require #SecurityDEVA or #ServicesDEVA. #SupportDEVA is there to ensure client and agent satisfaction sets the standard of excellence.",
         "emoji": "/public/devas/support/emoji.png",
         "avatar": "/public/devas/support/avatar.png",
         "background": "/public/devas/support/background.png",
-        "color": "#fc9bfd",
+        "color": "#a2dbe1",
         "bgcolor": "#1e0e1e",
         "gender": "deva",
-        "voice": "Joey"
+        "voice": "shimmer"
       }
     },
     "vars": {
@@ -46,17 +65,28 @@
       },
       "live": {
         "profile": "support",
-        "max_tokens": 35,
+        "max_tokens": 50,
+        "words": 25,
         "history": []
       },
-      "say": {
-        "profile": "support",
+      "ask": {
         "max_tokens": 500,
+        "words": 200,
         "history": []
       },
       "reply": {
         "profile": "support",
-        "max_tokens": 250,
+        "max_tokens": 300,
+        "words": 100,
+        "history": []
+      },
+      "comment": {
+        "profile": "support",
+        "max_tokens": 300,
+        "words": 100,
+        "history": []
+      },
+      "art": {
         "history": []
       },
       "trigger": "@SUPPORT",

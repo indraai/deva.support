@@ -1,8 +1,6 @@
 // Copyright (c)2023 Quinn Michaels
 // Support Deva
 // Support Deva manages the support eatures of deva.world.
-const fs = require('fs');
-const path = require('path');
 const package = require('./package.json');
 const info = {
   id: package.id,
@@ -18,8 +16,7 @@ const info = {
   copyright: package.copyright,
 };
 
-const data_path = path.join(__dirname, 'data.json');
-const {agent,vars} = require(data_path).DATA;
+const {agent,vars} = require('./data.json').DATA;
 
 const Deva = require('@indra.ai/deva');
 const SUPPORT = new Deva({

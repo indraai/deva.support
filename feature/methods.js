@@ -38,6 +38,9 @@ module.exports = {
   describe: Return the current status of the Log Buddy.
   ***************/
   status(packet) {
+    const agent = this.agent();
+    this.feature('support', `status`);
+    this.action('feature', 'support');
     return Promise.resolve(this.status());
   },
   /**************
@@ -46,6 +49,8 @@ module.exports = {
   describe: Return the current info for the deva.
   ***************/
   info(packet) {
+    this.feature('support', 'info');
+    this.action('feature', 'support');
     return Promise.resolve(this.info);
   },
   /**************
@@ -54,12 +59,15 @@ module.exports = {
   describe: The Help method returns the information on how to use the Log Buddy.
   ***************/
   help(packet) {
-    this.zone('support');
+    this.feature('support', 'help');
+    this.zone('help');
+    this.action('help');
+    this.state('help');
+    this.context('help');
     const {dir} = this.info();
     return new Promise((resolve, reject) => {
-      this.state('help');
       this.help(packet.q.text, dir).then(help => {
-        return this.question(`#feecting parse ${help}`);
+        return this.question(`${this.askChr}feecting parse ${help}`);
       }).then(parsed => {
         this.action('help');
         return resolve({

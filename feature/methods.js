@@ -39,8 +39,6 @@ module.exports = {
   ***************/
   status(packet) {
     const agent = this.agent();
-    this.feature('support', `status`);
-    this.action('feature', 'support');
     return Promise.resolve(this.status());
   },
   /**************
@@ -49,8 +47,6 @@ module.exports = {
   describe: Return the current info for the deva.
   ***************/
   info(packet) {
-    this.feature('support', 'info');
-    this.action('feature', 'support');
     return Promise.resolve(this.info);
   },
   /**************

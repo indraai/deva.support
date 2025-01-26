@@ -1,28 +1,31 @@
 {
   "id": 4077391632050,
-  "name": "@indra.ai/supportdeva",
-  "version": "0.0.44",
+  "name": "@indra.ai/deva.support",
+  "version": "0.0.1",
   "author": "Quinn Michaels",
   "license": "MIT",
-  "copyright": "2023",
-  "description": "The Support Deva manages the @SUPPORT features in deva.world.",
+  "copyright": "(c) 2025 Quinn Michaels",
+  "description": "The Support Deva manages the Support features in deva.world.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/indraai/SupportDeva.git"
+    "url": "git+https://github.com/indraai/deva.supportå.git"
   },
   "keywords": [
     "Support",
     "Deva",
-    "deva.world"
+    "Indra.ai",
+    "Deva.space",
+    "Deva.cloud",
+    "Deva.world"
   ],
   "bugs": {
-    "url": "https://github.com/indraai/SupportDeva/issues"
+    "url": "https://github.com/indraai/deva.support/issues"
   },
-  "homepage": "https://github.com/indraai/SupportDeva#readme",
+  "homepage": "https://deva.space/devas/support",
   "devDependencies": {
     "@indra.ai/deva": "^1.2.21"
   }

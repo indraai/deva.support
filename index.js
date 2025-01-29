@@ -54,10 +54,5 @@ const SUPPORT = new Deva({
     sup_answer(packet) {return;},
   },
   methods: {},
-  onDone(data) {
-    this.listen('devacore:question', this.func.sup_question);
-    this.listen('devacore:answer', this.func.sup_answer);
-    return Promise.resolve(data);
-  },
 });
 export default SUPPORT

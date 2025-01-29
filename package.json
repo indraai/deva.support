@@ -27,6 +27,6 @@
   },
   "homepage": "https://deva.space/devas/support",
   "devDependencies": {
-    "@indra.ai/deva": "^1.2.21"
+    "@indra.ai/deva": "^1.2.28"
   }
 }

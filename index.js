@@ -1,24 +1,32 @@
-// Copyright (c)2023 Quinn Michaels
+// Copyright (c)2025 Quinn Michaels
 // Support Deva
 // Support Deva manages the support eatures of deva.world.
-const package = require('./package.json');
+import Deva from '@indra.ai/deva';
+import pkg from './package.json' with {type:'json'};
+
+import data from './data.json' with {type:'json'};
+const {agent,vars} = data.DATA;
+
+// set the __dirname
+import {dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';    
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+
 const info = {
-  id: package.id,
-  name: package.name,
-  describe: package.description,
-  version: package.version,
-  url: package.homepage,
+  id: pkg.id,
+  name: pkg.name,
+  describe: pkg.description,
+  version: pkg.version,
+  url: pkg.homepage,
   dir: __dirname,
-  git: package.repository.url,
-  bugs: package.bugs.url,
-  author: package.author,
-  license: package.license,
-  copyright: package.copyright,
+  git: pkg.repository.url,
+  bugs: pkg.bugs.url,
+  author: pkg.author,
+  license: pkg.license,
+  copyright: pkg.copyright,
 };
 
-const {agent,vars} = require('./data.json').DATA;
-
-const Deva = require('@indra.ai/deva');
 const SUPPORT = new Deva({
   info,
   agent,
@@ -52,4 +60,4 @@ const SUPPORT = new Deva({
     return Promise.resolve(data);
   },
 });
-module.exports = SUPPORT
+export default SUPPORT

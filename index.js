@@ -53,5 +53,8 @@ const SUPPORT = new Deva({
     sup_answer(packet) {return;},
   },
   methods: {},
+  onError(err) {
+    console.log('ERR', err);
+  }
 });
 export default SUPPORT

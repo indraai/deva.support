@@ -53,6 +53,10 @@ const SUPPORT = new Deva({
     sup_answer(packet) {return;},
   },
   methods: {},
+  onReady(data, resolve) {
+    this.prompt('ready');
+    return resolve(data);
+  },
   onError(err) {
     console.log('ERR', err);
   }

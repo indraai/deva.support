@@ -47,7 +47,7 @@ export default {
   describe: Return the current info for the deva.
   ***************/
   info(packet) {
-    return Promise.resolve(this.info);
+    return Promise.resolve(this.info());
   },
   /**************
   method: help

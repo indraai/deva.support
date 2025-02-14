@@ -1,12 +1,11 @@
 {
   "name": "Support Deva Data File",
   "describe": "The main Data file for Support Deva",
-  "copyright": "Copyright (c)2023 Quinn Michaels. All rights reserved.",
+  "copyright": "Copyright (c)2025 Quinn Michaels. All rights reserved.",
   "DATA": {
     "agent": {
       "id": 4077391632050,
       "key": "support",
-      "model": "ft:gpt-3.5-turbo-0613:indra-ai::8DlRY87Q",
       "prompt": {
         "emoji": "💼",
         "text": "Support",
@@ -24,26 +23,14 @@
         }
       },
       "profile": {
-        "identity": "You are #SupportDEVA in deva.world.",
-        "invoke": "#SupportDEVA of deva.world",
         "name": "Support Deva",
-        "mention": "@SupportDEVA",
-        "tags": "#Support #SupportDEVA",
-        "pronouns": "Deva",
+        "gender": "DEVA",
+        "pronouns": "He, Him",
+        "owner": "Quinn Michaels",
         "creator": "Quinn Michaels",
         "created": "Monday, May 22, 2023 at 9:49 AM",
-        "house": "House Deva",
-        "temple": "Kedarnath Temple (Vadari)",
-        "forest": "Pushkara",
-        "city": "Amaravati",
-        "region": "Svarga",
-        "land": "Visisipra",
-        "planet": "Arjika",
-        "loka": "Devaloka",
-        "verse": "Rikverse",
-        "system": "deva.world",
-        "agency": "indra.agency",
-        "describe": "The Support Deva provides the essential tools and resources to support the deva.world multi-agent system. Wether it's helping users learn systems, or resolving issues that may require #SecurityDEVA or #ServicesDEVA. #SupportDEVA is there to ensure client and agent satisfaction sets the standard of excellence.",
+        "system": "Deva.world.support",
+        "describe": "The SupportDEVA provides the essential resources to support the Deva.world multi-agent system.",
         "emoji": "/public/devas/support/emoji.png",
         "avatar": "/public/devas/support/avatar.png",
         "background": "/public/devas/support/background.png",
@@ -58,6 +45,7 @@
         "init": "🟠 INIT",
         "start": "🔵 START",
         "enter": "🟢 ENTER",
+        "ready": "⭐️ Support Deva Ready!",
         "stop": "🔴 STOP",
         "exit": "🟡 EXIT",
         "done": "🟣 DONE",
@@ -72,8 +60,6 @@
         "page_token": ""
       },
       "ask": {
-        "max_tokens": 500,
-        "words": 200,
         "history": []
       },
       "reply": {

@@ -32,26 +32,13 @@ const SUPPORT = new Deva({
   vars,
   utils: {
     translate(input) {return input.trim();},
-    parse(input, route=false) {
-      // with the parse method we are going to take the input with a
-      // values object to provide the personalization
-      let output = input;
-      if (route) for (let x in route) {
-        const key = `::${x}::`;
-        const value = route[x];
-        output = output.replace(key, value);
-      }
-      return output.trim();
-    },
+    parse(input, route=false) {return input.trim();},
     process(input) {return input.trim();}
   },
   listeners: {},
   modules: {},
   deva: {},
-  func: {
-    sup_question(packet) {return;},
-    sup_answer(packet) {return;},
-  },
+  func: {},
   methods: {},
   onReady(data, resolve) {
     this.prompt(this.vars.messages.ready);

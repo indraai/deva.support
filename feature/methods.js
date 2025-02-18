@@ -53,7 +53,11 @@ export default {
   describe: Return the current status of the Log Buddy.
   ***************/
   status(packet) {
-    const agent = this.agent();
+    this.zone('support');
+    this.feature('status');
+    this.action('status');
+    this.state('resolve', 'status');
+    this.context('status');
     return Promise.resolve(this.status());
   },
   /**************
@@ -62,6 +66,11 @@ export default {
   describe: Return the current info for the deva.
   ***************/
   info(packet) {
+    this.zone('support');
+    this.feature('info');
+    this.action('info');
+    this.state('get', 'info');
+    this.context('info');
     return Promise.resolve(this.info());
   },
   /**************
@@ -70,8 +79,8 @@ export default {
   describe: The Help method returns the information on how to use the Log Buddy.
   ***************/
   help(packet) {
-    this.feature('support', 'help');
-    this.zone('help');
+    this.zone('support');
+    this.feature('help');
     this.action('help');
     this.state('help');
     this.context('help');

@@ -79,11 +79,6 @@ export default {
   describe: The Help method returns the information on how to use the Log Buddy.
   ***************/
   help(packet) {
-    this.zone('support');
-    this.feature('help');
-    this.action('help');
-    this.state('help');
-    this.context('help');
     const {dir} = this.info();
     return new Promise((resolve, reject) => {
       this.help(packet.q.text, dir).then(help => {

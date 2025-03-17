@@ -83,8 +83,9 @@
         "status": "getting status",
         "info": "getting info",
         "feature": "accessing feature",
-        "issue": "has issues",
-        "help": "asking for help"
+        "issue": "Suppot Issue",
+        "help": "Support Help",
+        "ask": "Ask Support"
       }
     }
   }

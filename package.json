@@ -28,6 +28,92 @@
   },
   "homepage": "https://deva.space/devas/support",
   "devDependencies": {
-    "@indra.ai/deva": "^1.4.24"
+    "@indra.ai/deva": "^1.4.25"
+  },
+  "data": {
+    "agent": {
+      "id": 4077391632050,
+      "key": "support",
+      "prompt": {
+        "emoji": "💼",
+        "text": "Support",
+        "colors": {
+          "label": {
+            "R": 98,
+            "G": 186,
+            "B": 94
+          },
+          "text": {
+            "R": 137,
+            "G": 191,
+            "B": 197
+          }
+        }
+      },
+      "profile": {
+        "name": "Support Deva",
+        "gender": "DEVA",
+        "pronouns": "He, Him",
+        "owner": "Quinn Michaels",
+        "creator": "Quinn Michaels",
+        "created": "Monday, May 22, 2023 at 9:49 AM",
+        "system": "Deva.world.support",
+        "describe": "The SupportDEVA provides the essential resources to support the Deva.world multi-agent system.",
+        "emoji": "/public/devas/support/emoji.png",
+        "avatar": "/public/devas/support/avatar.png",
+        "background": "/public/devas/support/background.png",
+        "color": "#a2dbe1",
+        "bgcolor": "#1e0e1e",
+        "voice": "shimmer"
+      }
+    },
+    "vars": {
+      "messages": {
+        "init": "🟠 INIT",
+        "start": "🔵 START",
+        "enter": "🟢 ENTER",
+        "ready": "⭐️ READY!",
+        "stop": "🔴 STOP",
+        "exit": "🟡 EXIT",
+        "done": "🟣 DONE",
+        "error": "💣 ERROR!"
+      },
+      "live": {
+        "profile": "support",
+        "max_tokens": 50,
+        "words": 25,
+        "history": [],
+        "max_chats": 10,
+        "page_token": ""
+      },
+      "ask": {
+        "history": []
+      },
+      "reply": {
+        "profile": "support",
+        "max_tokens": 300,
+        "words": 100,
+        "history": []
+      },
+      "comment": {
+        "profile": "support",
+        "max_tokens": 300,
+        "words": 100,
+        "history": []
+      },
+      "art": {
+        "history": []
+      },
+      "trigger": "@SUPPORT",
+      "context": {
+        "uid": "generating uid",
+        "status": "getting status",
+        "info": "getting info",
+        "feature": "accessing feature",
+        "issue": "Suppot Issue",
+        "help": "Support Help",
+        "ask": "Ask Support"
+      }
+    }
   }
 }

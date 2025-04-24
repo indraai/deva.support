@@ -51,20 +51,27 @@
         }
       },
       "profile": {
-        "name": "Support Deva",
-        "gender": "DEVA",
+        "name": "#SupportDeva",
+        "title": "Support Deva",
+        "subtitle": "Providing essential resources to support",
+        "describe": "The SupportDEVA provides the essential resources to support the Deva.world multi-agent system.",
+        "tweet": "Providing essential resources to support the Deva.world system.",
+        "hashtags": "QuinnMichaels,IndraAI,DevaWorld,SupportDeva",
         "pronouns": "He, Him",
+        "gender": "DEVA",
+        "style": "Gentle, compassionate, and a great listener. A true champion of required user consent.",
+        "voice": "onyx",
+        "system": "Deva.world.support",
+        "layout": "default",
+        "color": "rgb(137,191,197)",
+        "bgcolor": "rgb(30,14,30)",
+        "emoji": "/assets/devas/support/emoji.png",
+        "avatar": "/assets/devas/support/avatar.png",
+        "image": "/assets/devas/support/image.png",
+        "background": "/assets/devas/support/background.png",
         "owner": "Quinn Michaels",
         "creator": "Quinn Michaels",
-        "created": "Monday, May 22, 2023 at 9:49 AM",
-        "system": "Deva.world.support",
-        "describe": "The SupportDEVA provides the essential resources to support the Deva.world multi-agent system.",
-        "emoji": "/public/devas/support/emoji.png",
-        "avatar": "/public/devas/support/avatar.png",
-        "background": "/public/devas/support/background.png",
-        "color": "#a2dbe1",
-        "bgcolor": "#1e0e1e",
-        "voice": "shimmer"
+        "created": "Monday, May 22, 2023 at 9:49 AM"
       }
     },
     "vars": {

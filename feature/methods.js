@@ -48,6 +48,77 @@ export default {
   },
 
   /**************
+  name: list
+  describe: Get a listing of items from the Deva Core Contexts, Features, Actions, States.
+  params: item
+  **************/
+  list(packet) {
+    const {id, q} = packet;
+    const {params} = q.meta;
+    const item = params[1];
+    const {key} = this.agent();
+
+    this.context('features', `${key}:${item}:${id.uid}`);
+    this.action('method', `${key}:features:${id.uid}`);
+
+    return new Promise((resolve, reject) => {
+      try {
+        const items = this[item]();
+        
+        const _items = [
+          '→',
+          `::begin:${key}:${id.uid}`,
+        ];
+        for (let item in items.value) {
+          _items.push(`• ${item}: ${items.value[item]}`);
+        }
+        
+        _items.push(`::end:${key}:${item}:${id.uid}`);
+  
+        this.question(`${this.askChr}feecting parse ${_items.join('\n')}`).then(parsed => {
+          return resolve({
+            text:parsed.a.text,
+            html:parsed.a.html,
+            data:parsed.a.data,
+          });
+        }).catch(reject => {
+          return this.err(e, packet, reject);
+        })
+      } catch (e) {
+        return this.err(e, packet, reject);
+      }
+    });
+  },	
+
+  async features(packet) {
+    const {key} = this.agent();
+    this.context('features', `${key}:${packet.id.uid}`);
+    this.action('method', `${key}:features:${packet.id.uid}`);
+    return this.func.lists('features');	
+  },
+  
+  async zones(packet) {
+    const {key} = this.agent();
+    this.context('zones', `${key}:${packet.id.uid}`);
+    this.action('method', `${key}:zones:${packet.id.uid}`);
+    return this.func.lists('zones');	
+  },
+
+  async actions(packet) {
+    const {key} = this.agent();
+    this.context('actions', `${key}:${packet.id.uid}`);
+    this.action('method', `${key}:actions:${packet.id.uid}`);
+    return this.func.lists('actions');	
+  },
+
+  async contexts(packet) {
+    const {key} = this.agent();
+    this.context('contexts', `${key}:${packet.id.uid}`);
+    this.action('method', `${key}:contexts:${packet.id.uid}`);
+    return this.func.lists('contexts');	
+  },
+  
+  /**************
   method: status
   params: packet
   describe: Return the current status of the Log Buddy.

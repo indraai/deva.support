@@ -1,19 +1,22 @@
-// Copyright (c):year: :copyright:
-// :name: test file
+"use strict";
+// Copyright ©2025 Quinn A Michaels; All rights reserved. 
+// Legal Signature Required For Lawful Use.
+// Distributed under VLA:47847759280011485514 LICENSE.md
+// Support Deva test file
 
 const {expect} = require('chai')
 const :key: = require('./index.js');
 
-describe(:key:.me.name, () => {
+describe(SupportDeva.me.name, () => {
   beforeEach(() => {
-    return :key:.init()
+    return SupportDeva.init()
   });
   it('Check the DEVA Object', () => {
-    expect(:key:).to.be.an('object');
-    expect(:key:).to.have.property('agent');
-    expect(:key:).to.have.property('vars');
-    expect(:key:).to.have.property('listeners');
-    expect(:key:).to.have.property('methods');
-    expect(:key:).to.have.property('modules');
+    expect(SupportDeva).to.be.an('object');
+    expect(SupportDeva).to.have.property('agent');
+    expect(SupportDeva).to.have.property('vars');
+    expect(SupportDeva).to.have.property('listeners');
+    expect(SupportDeva).to.have.property('methods');
+    expect(SupportDeva).to.have.property('modules');
   });
 })

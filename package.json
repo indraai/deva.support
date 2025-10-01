@@ -59,7 +59,7 @@
   },
   "homepage": "https://indra.ai",
   "devDependencies": {
-    "@indra.ai/deva": "^1.7.2"
+    "@indra.ai/deva": "^1.8.4"
   },
   "data": {
     "agent": {

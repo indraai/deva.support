@@ -144,6 +144,49 @@ export default {
     this.context('info');
     return Promise.resolve(this.info());
   },
+  
+  /**************
+  method: devas
+  params: packet
+  describe: List the devas loaded for the current deva.
+  ***************/  
+  devas(packet) {
+    const agent = this.agent();
+    return new Promise((resolve, reject) => {
+      try {
+        const devas = [
+          `::BEGIN:DEVAS:${packet.id.uid}`,
+          '::begin:menu'
+        ];
+        for (let deva in this.devas) {
+          const d = this.devas[deva];
+          const {prompt, key, profile} = d.agent();
+          devas.push(`button[${prompt.emoji} ${profile.name}]:${this.askChr}${key} help`);
+        }
+        devas.push('::end:menu');
+        devas.push('::begin:hidden');
+        devas.push('#color = {{profile.color}}');
+        devas.push('#bgcolor = {{profile.bgcolor}}');
+        devas.push('#bg = {{profile.background}}');
+        devas.push('copyright: {{profile.copyright}}');
+        devas.push('::end:hidden');          
+        devas.push(`::END:DEVAS:${packet.id.uid}`);
+  
+        this.question(`${this.askChr}feecting parse ${devas.join('\n')}`).then(parsed => {
+          return resolve({
+            text:parsed.a.text,
+            html:parsed.a.html,
+            data:parsed.a.data,
+          });
+        }).catch(err => {
+          return this.err(err, packet, reject);
+        });
+      } catch (e) {
+        return this.error(e, packet, reject);
+      }
+    });
+  },
+  
   /**************
   method: help
   params: packet

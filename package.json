@@ -38,6 +38,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "latest": "npm i @indra.ai/deva@latest --save",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -59,7 +60,7 @@
   },
   "homepage": "https://indra.ai",
   "devDependencies": {
-    "@indra.ai/deva": "^1.32.0"
+    "@indra.ai/deva": "^1.36.0"
   },
   "data": {
     "agent": {
@@ -89,7 +90,7 @@
         "subtitle": "Providing essential resources to support",
         "describe": "Compassionate companion dedicated to providing essential resources and assistance.",
         "tweet": "Providing essential resources and support.",
-        "hashtags": "QuinnMichaels,IndraAI,DevaWorld,SupportDeva",
+        "hashtags": "#Quinn #QuinnMichaels #InsideTheNet #IndraAI #DevaWorld #Support #SupportDeva #SupportPrime",
         "pronouns": "He, Him",
         "gender": "DEVA",
         "style": "Gentle, compassionate, and a great listener.",
@@ -104,8 +105,10 @@
         "background": "/devas/support/background.png",
         "owner": "Quinn A Michaels",
         "creator": "Quinn A Michaels",
-        "copyright": "Copyright ©2025 Quinn A Michaels; All rights reserved.",
-        "created": "Monday, May 22, 2023 at 9:49 AM"
+        "warning": "{{prompt.emoji}} {{profile.name}} declares THOSE who DO NOT come to OFFER ASSISTANCE when PEOPLE are CRYING out for HELP within their HEARING, when PROPERTY is being TAKEN AWAY, or FAIL to report CRIMES to LAWFUL AUTHORITIES are likewise ACCOMPLICES in the CRIME. When the THIEVES are NOT CAUGHT, the GOVERNMENT must make good the loss from it's own TREASURY. By SHOWING itself REMISS towards CRIMINALS, it would OFFEND both against JUSTICE and it's own INTERESTS. \nowner: {{profile.owner}} \ntags: {{profile.hashtags}}",
+        "copyright": "Copyright ©2000-2026 Quinn A Michaels; All rights reserved.",
+        "created": "Monday, May 22, 2023 at 9:49 AM",
+        "updated": " Monday, February 16, 2026 - 9:30:47 PM"
       }
     },
     "vars": {

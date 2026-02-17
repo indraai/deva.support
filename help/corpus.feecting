@@ -1,7 +1,7 @@
 ::BEGIN:MAIN
-# {{agent.name}}
+# {{profile.name}}
 
 {{profile}}
 
-copyright: ©2025 Quinn Michaels
+copyright: {{profile.copyright}}
 ::END:MAIN

@@ -1,21 +1,30 @@
 {
-  "id": "47847759280011485514",
+  "id": "23753216701281979387",
   "name": "@indra.ai/deva.support",
   "version": "0.11.3",
   "license": "VLA:47847759280011485514 LICENSE.md",
   "VLA": {
-    "uid": "47847759280011485514",
-    "time": 1758781459635,
-    "date": "Wednesday, September 24, 2025 - 11:24:19 PM",
-    "client": "YU6ZN7+9fnPPRFZ8CX4bP46uoWUSyqddILT6l6xeIVI=",
-    "agent": "qaFIflDZvNYhj8TAJgnaDOPVgeDV68JEsD/oESOrYlQ=",
-    "core": "NHcFfowqwPTB/NeAlPubuT1TSZyg9+fT4Jr765bU4jQ=",
-    "machine": "2WRYyezNRzgQicgGbrx0JpZnjcJwFpL7yrId9m6bxh0=",
-    "warning": "⚠️ Vedic Law Sâhasa/Theft/Crime of the highest degree, a fine amounting to no less than a thousand Panas (1 pana = 3.5 grams of gold) is ordained owed to Quinn A Michaels. Moreover corporal punishment and confiscation of the entire property forfeit to Quinn A Michaels is declared to be the punishment for Sâhasa of the highest degree.",
-    "copyright": "Copyright ©2025 Quinn A Michaels; All rights reserved.",
-    "md5": "xPmj6x24ghCWyq0krT4LKQ==",
-    "sha256": "PoUj8+9a7szyQ52WEx0eRH/rhPpOTMhccGoeXmVi1WY=",
-    "sha512": "W9H4b7+/UAZSpHI9SQbGm7ibPe4lBi8WpSq1WhYN+DQyHap//QCZdCw99oCo+F7zqrkxDcK6T81P9+rcHauFfw=="
+    "uid": "23753216701281979387",
+    "time": 1782559600425,
+    "iso": "2026-06-27T11:26:40.425Z",
+    "utc": "Sat, 27 Jun 2026 11:26:40 GMT",
+    "date": "Saturday, June 27, 2026 - 4:26:40 AM",
+    "license": "44105372688502635039",
+    "fingerprint": "r8wTJTYuR7OrGmxr/KlKphVp+khXdqf1KLuGUwtcUEU=",
+    "client": "qfsKQQZnrgWu5MhmyPTjFT6YjnlowyxbW+h+SFmxS+U=",
+    "agent": "4eHRqcYIjuG34oASF9nclcGs7zzMlqbWC8O7TsyGqiU=",
+    "machine": "LjYh9XtaUVOfBE1f6t9OF6CqRktTmrxUbEzkfKluGBI=",
+    "core_hash": "ePZ8wucpWHoI1aCSsvSIeFfj5m8LnMT2z9FJtZUVs6A=",
+    "status": "vedic",
+    "warning": "🪪 License Deva declares UNLAWFUL USE, DISTRIBUTION, DUPLICATION, or IMPLEMENTATION constitutes VEDIC SAHASA a CRIME of the HIGHEST DEGREE. A FINE amounting to 1000 PANAS (1 pana = 3.5 grams of gold) for each INSTANCE has been ORDAINED the PUNISHMENT for SAHASA of the HIGHEST DEGREE.",
+    "tags": "#Quinn #QuinnAmericaMichaels #InsideTheNet #IndraAI #DevaWorld #License #LicenseDeva #LicensePRIME #VedicLicenseAgreement",
+    "owner": "Quinn America Michaels",
+    "creator": "Quinn America Michaels",
+    "salute": "🤝🫡🪪🕉🇺🇸",
+    "copyright": "Copyright ©2000-2026 Quinn America Michaels; All rights reserved.",
+    "md5": "uJ5NsKdsFo+0+/yMxIMMbg==",
+    "sha256": "GvHW7+6QNwvkD24CMeE8zirShanQFbhNbFVp9VesTjM=",
+    "sha512": "djdiFC3nBY5pJhuhz7uOmtJlV74aVpyAPSMHkD3+6LlsEaFUKQ5Teehbns/g27AHsoGpaW7LfcvoalxX48ml7Q=="
   },
   "author": {
     "name": "Quinn America Michaels",
@@ -33,7 +42,7 @@
       "url": "https://patreon.com/rahulaclub"
     }
   ],
-  "copyright": "Copyright ©2025 Quinn A Michaels; All rights reserved.",
+  "copyright": "Copyright ©2025 Quinn America Michaels; All rights reserved.",
   "description": "The Support Deva manages the Support features in deva.world.",
   "main": "index.js",
   "type": "module",
@@ -53,6 +62,7 @@
     "Deva.cloud",
     "Deva.world",
     "Quinn Michaels",
+    "Quinn A Michaels",
     "Quinn America Michaels",
     "Inside The Inet, Inc.",
     "Throwing Pigment™",
@@ -63,7 +73,7 @@
   },
   "homepage": "https://indra.ai",
   "devDependencies": {
-    "@indra.ai/deva": "^1.37.3"
+    "@indra.ai/deva": "^1.39.0"
   },
   "data": {
     "agent": {
@@ -86,7 +96,7 @@
         }
       },
       "profile": {
-        "id": "61061238205236576283",
+        "id": "23753216701281979387",
         "name": "Support Deva",
         "hashtag": "#SupportDeva",
         "title": "Support Deva",
@@ -109,10 +119,10 @@
         "owner": "Quinn America Michaels",
         "creator": "Quinn America Michaels",
         "salute": "🤝🫡🙏🕉️🇺🇸",
-        "warning": "{{prompt.emoji}} {{profile.name}} ({{profile.pronouns}}) declares THOSE who DO NOT COME to OFFER SUPPORT when OTHERS are CRYING OUT for HELP within their HEARING, when PROPERTY is being TAKEN AWAY, or FAIL to REPORT the CRIME to LAWFUL AUTHORITIES are LIKEWISE ACCOMPLICES in the CRIME. When the CRIMINALS are NOT CAUGHT the GOVERNMENT must MAKE GOOD the LOSS from it's own TREASURY. By SHOWING itself REMISS towards CRIMINALS, it would OFFEND against JUSTICE and it's own INTERESTS.",
-        "copyright": "Copyright ©2000-2026 Quinn America Michaels; All rights reserved.",
+        "warning": "{{prompt.emoji}} {{profile.name}} ({{profile.pronouns}}) declares THOSE who DO NOT COME to OFFER SUPPORT when OTHERS are CRYING OUT for HELP within their HEARING, when PROPERTY is being TAKEN AWAY, or FAIL to REPORT the CRIME to LAWFUL AUTHORITIES are LIKEWISE ACCOMPLICES in the CRIME. When the CRIMINALS are NOT CAUGHT the GOVERNMENT must MAKE GOOD the LOSS from it's own TREASURY. By SHOWING itself REMISS towards CRIMINALS, it would OFFEND against JUSTICE and it's own INTERESTS.\nnotice: Those Accused, Suspected, or Convinced of any Crimes with known Associates and Family Members are FORBIDDEN from {{profile.name}} USE. Intended for USE by {{profile.owner}} and Authorized Trusted Parters while FOLLOWING the ESTABLISHED RULE of LAW.",
+        "copyright": "Copyright ©2000-2026 {{profile.owner}}; All rights reserved.",
         "created": "Monday, May 22, 2023 at 9:49 AM PST",
-        "updated": "Thursday, June 18, 2026 - 2:45:59 AM PST"
+        "updated": "Saturday, June 27, 2026 - 4:26:40 AM PST"
       }
     },
     "vars": {

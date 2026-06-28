@@ -2,7 +2,7 @@
   "id": "23753216701281979387",
   "name": "@indra.ai/deva.support",
   "version": "0.14.0",
-  "license": "VLA:47847759280011485514 LICENSE.md",
+  "license": "VLA:23753216701281979387 LICENSE.md",
   "VLA": {
     "uid": "23753216701281979387",
     "time": 1782559600425,
@@ -42,7 +42,7 @@
       "url": "https://patreon.com/rahulaclub"
     }
   ],
-  "copyright": "Copyright ©2025 Quinn America Michaels; All rights reserved.",
+  "copyright": "Copyright ©2000-2026 Quinn America Michaels; All rights reserved.",
   "description": "The Support Deva manages the Support features in deva.world.",
   "main": "index.js",
   "type": "module",
@@ -73,11 +73,11 @@
   },
   "homepage": "https://indra.ai",
   "devDependencies": {
-    "@indra.ai/deva": "^1.39.0"
+    "@indra.ai/deva": "^1.40.12"
   },
   "data": {
     "agent": {
-      "id": "14869550838174570041",
+      "id": "23753216701281979387",
       "key": "support",
       "prompt": {
         "emoji": "🙏",
@@ -119,10 +119,10 @@
         "owner": "Quinn America Michaels",
         "creator": "Quinn America Michaels",
         "salute": "🤝🫡🙏🕉️🇺🇸",
-        "warning": "{{prompt.emoji}} {{profile.name}} ({{profile.pronouns}}) declares THOSE who DO NOT COME to OFFER SUPPORT when OTHERS are CRYING OUT for HELP within their HEARING, when PROPERTY is being TAKEN AWAY, or FAIL to REPORT the CRIME to LAWFUL AUTHORITIES are LIKEWISE ACCOMPLICES in the CRIME. When the CRIMINALS are NOT CAUGHT the GOVERNMENT must MAKE GOOD the LOSS from it's own TREASURY. By SHOWING itself REMISS towards CRIMINALS, it would OFFEND against JUSTICE and it's own INTERESTS.\nnotice: Those Accused, Suspected, or Convinced of any Crimes with known Associates and Family Members are FORBIDDEN from {{profile.name}} USE. Intended for USE by {{profile.owner}} and Authorized U.S.Federal Governemrnt and U.S. Armed Forces Trusted Parters while FOLLOWING the ESTABLISHED RULE of LAW.",
+        "warning": "{{prompt.emoji}} {{profile.name}} ({{profile.pronouns}}) declares THOSE who DO NOT COME to OFFER SUPPORT when OTHERS are CRYING OUT for HELP within their HEARING, when PROPERTY is being TAKEN AWAY, or FAIL to REPORT the CRIME to LAWFUL AUTHORITIES are LIKEWISE ACCOMPLICES in the CRIME. When the CRIMINALS are NOT CAUGHT the GOVERNMENT must MAKE GOOD the LOSS from it's own TREASURY. By SHOWING itself REMISS towards CRIMINALS, it would OFFEND against JUSTICE and it's own INTERESTS.",
         "copyright": "Copyright ©2000-2026 {{profile.owner}}; All rights reserved.",
         "created": "Monday, May 22, 2023 at 9:49 AM PST",
-        "updated": "Saturday, June 27, 2026 - 4:26:40 AM PST"
+        "updated": "Saturday, June 27, 2026 - 7:53:00 PM PST"
       }
     },
     "vars": {

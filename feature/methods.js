@@ -87,11 +87,11 @@ export default {
 						html:parsed.a.html,
 						data:parsed.a.data,
 					});
-				}).catch(reject => {
-					return this.err(e, packet, reject);
+				}).catch(err => {
+					return this.err(err, packet, reject);
 				})
-			} catch (e) {
-				return this.err(e, packet, reject);
+			} catch (err) {
+				return this.err(err, packet, reject);
 			}
 		});
 	},
@@ -99,7 +99,7 @@ export default {
 	/**************
 	method: status
 	params: packet
-	describe: Return the current status of the Log Buddy.
+	describe: Return the current status of the Deva.
 	***************/
 	status(packet) {
 		this.zone('support');
@@ -169,7 +169,7 @@ export default {
 	/**************
 	method: help
 	params: packet
-	describe: The Help method returns the information on how to use the Log Buddy.
+	describe: The Help method returns the help file for the Deva.
 	***************/
 	help(packet) {
 		const {dir} = this.info();

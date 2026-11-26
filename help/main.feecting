@@ -5,14 +5,14 @@
 // Thursday, November 26, 2026 - 10:15:20 AM PST
 
 ::BEGIN:MAIN
-# {{profil.ename}}
+# {{profile.ename}}
 
 {{profile}}
 
 ::begin:hidden
 #color = {{profile.color}}
 #bgcolor = {{profile.bgcolor}}
-#bg = {{profile.bg}}
+#bg = {{profile.background}}
 copyright: {{profile.copyright}}
 ::end:hidden
 ::END:MAIN

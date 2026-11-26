@@ -2,7 +2,7 @@
 
 **Version:** 1.4.1
 **VLA:** 45323842993175615300  
-**Effective:** Thursday, November 26, 2026 - 10:15:20 AM PM  
+**Effective:** Thursday, November 26, 2026 - 10:15:20 AM PST  
 **Owner:** Quinn Michaels  
 **Company:** Inside The Net, Inc.  
 **Email:** quinn@indra.ai  

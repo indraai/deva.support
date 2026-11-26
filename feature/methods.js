@@ -21,7 +21,7 @@ export default {
 				for (let x in item) {
 					global.push(`${x}: ${item[x]}`);
 				}
-				global.push(`::end:global:${item.key}:${this.lib.hash(item)}`);
+				global.push(`::end:global:${item.key}:${item.id}`);
 			});
 			const concerns = [];
 			support.concerns.forEach((item, index) => {
@@ -36,7 +36,7 @@ export default {
 				`client: ${support.client_name}`,
 				'**concerns**',
 				concerns.join('\n'),
-				`::end:client:${this.lib.hash(support)}`,
+				`::end:client:${support.client_id}`,
 				'### Global',
 				global.join('\n'),
 				'::END:SUPPORT',
@@ -94,34 +94,6 @@ export default {
 				return this.err(e, packet, reject);
 			}
 		});
-	},
-
-	async features(packet) {
-		const {key} = this.agent();
-		this.context('features', `${key}:${packet.id.uid}`);
-		this.action('method', `${key}:features:${packet.id.uid}`);
-		return this.func.lists('features');	
-	},
-	
-	async zones(packet) {
-		const {key} = this.agent();
-		this.context('zones', `${key}:${packet.id.uid}`);
-		this.action('method', `${key}:zones:${packet.id.uid}`);
-		return this.func.lists('zones');	
-	},
-
-	async actions(packet) {
-		const {key} = this.agent();
-		this.context('actions', `${key}:${packet.id.uid}`);
-		this.action('method', `${key}:actions:${packet.id.uid}`);
-		return this.func.lists('actions');	
-	},
-
-	async contexts(packet) {
-		const {key} = this.agent();
-		this.context('contexts', `${key}:${packet.id.uid}`);
-		this.action('method', `${key}:contexts:${packet.id.uid}`);
-		return this.func.lists('contexts');	
 	},
 	
 	/**************

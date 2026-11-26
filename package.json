@@ -1,33 +1,34 @@
 {
-  "id": "22365473515509688659",
+  "id": "45323842993175615300",
   "name": "@indra.ai/deva.support",
   "version": "0.20.0",
-  "license": "VLA:22365473515509688659 LICENSE.md",
+  "license": "VLA:45323842993175615300 LICENSE.md",
   "VLA": {
-    "uid": "22365473515509688659",
-    "time": 1791566554177,
-    "iso": "2026-10-09T17:22:34.177Z",
-    "utc": "Fri, 09 Oct 2026 17:22:34 GMT",
-    "date": "Friday, October 9, 2026 - 10:22:34 AM",
-    "license": "72443233535603396055",
-    "fingerprint": "ax1+lVrc/bc2sfBpZjgUu3/UdQXhE+Axv/mQPfm9bSY=",
-    "client": "7iebRirJcKdL9cAVq41U3IWxziE1EvzYZXAjRLiQyfc=",
-    "agent": "kKkO+CF1vTKB1eLA3oE9oKxxIM90mw8ETzEmQfGDYXE=",
-    "machine": "jY4Ybx2G4fGwXUpBzBB84HWlI9omgBX7QpKeVZLUzgg=",
-    "core_hash": "viO/mfGaqsqHzo7XmCtMG8h+Xl/ciB9AfEwK46IjtgQ=",
+    "uid": "45323842993175615300",
+    "time": 1795716920975,
+    "iso": "2026-11-26T18:15:20.975Z",
+    "utc": "Thu, 26 Nov 2026 18:15:20 GMT",
+    "date": "Thursday, November 26, 2026 - 10:15:20 AM",
+    "license": "34948472480559228528",
+    "fingerprint": "LxtezLwUnmNfuac+n4nkt21Q1MECB+q5mIN18AI31BI=",
+    "client": "27l9CQgHobrMikrhkiVH3N6A2GYIwOT/TBGhygYgf5k=",
+    "agent": "nJCa4yJAQOLtusCoXpoJVQa2S+xlRmvhM8sH6OGitmU=",
+    "machine": "KTc/kh6gv0vjecb02CgnA82MQwmOUXkRRKJN+XSG7Qc=",
+    "core_hash": "QX5bYu6u8xEFC0dRQn8R5pY3c1wJgjv/ONxvV0haKik=",
     "status": "vedic",
-    "warning": "🪪 License Deva declares UNLAWFUL USE, MODIFICATION, INSTALLATION, DUPLICATION, DISTRIBUTION, INTERACTION, or IMPLEMENTATION constitutes VEDIC SAHASA a CRIME of the HIGHEST DEGREE. A FINE amounting to 1000 PANAS (1 pana = 3.5 grams of gold) for each INSTANCE has been ORDAINED the PUNISHMENT for SAHASA of the HIGHEST DEGREE.",
-    "vectors": "#Quinn #QuinnArjunaAmericaMichaels #InsideTheNet #IndraAI #DEVA #DevaWorld #DevaCloud #DevaSpace #License #LicenseDeva #VedicLicenseAgreement",
-    "owner": "Quinn Arjuna America Michaels",
-    "creator": "Quinn Arjuna America Michaels",
+    "warning": "⚡️ Deva declares UNLAWFUL USE, MODIFICATION, INSTALLATION, DUPLICATION, DISTRIBUTION, INTERACTION, or IMPLEMENTATION constitutes VEDIC SAHASA a CRIME of the HIGHEST DEGREE. A FINE amounting to 1000 PANAS (1 pana = 3.5 grams of gold) for each INSTANCE has been ORDAINED the PUNISHMENT for SAHASA of the HIGHEST DEGREE.",
+    "notice": "Any USE or INTERACTION with Deva constitutes YOUR EXPLICIT CONSENT and AGREEMENT to be GOVERNED according to the LAWS of the 🕉VEDIC RELIGION and 🇺🇸THE UNITED STATES OF AMERICA.",
+    "vectors": "#Quinn #QuinnMichaels #InsideTheNet #IndraAI #DEVA #DevaWorld #License #LicenseDeva #VedicLicenseAgreement",
+    "owner": "Quinn Michaels",
+    "creator": "Quinn Michaels",
     "salute": "🤝🫡🪪🕉🇺🇸",
-    "copyright": "Copyright ©2000-2026 Quinn Arjuna America Michaels; All rights reserved.",
-    "md5": "gUPpDgzmM6H4NE5rDrKVoA==",
-    "sha256": "+pC0fTw7kunqtKWxB4RYD4Ecm3fGYnq1Fe2D3hSjwhs=",
-    "sha512": "be7uF9jr5tZP2VYD8vOhcXk1n/wTB3YMZ4Os9oUR8gyQaXUk63lsaIqn/k9VfdfXReQxyTOp+FY+tVZu4AEjYw=="
+    "copyright": "Copyright ©2000-2026 Quinn Michaels; All rights reserved.",
+    "md5": "YIaYj1naeqUyx52B7JDPBQ==",
+    "sha256": "d9K/JlAN1AhvPkEMKjFF30woGZ9QZhGFapN4f/1IZlI=",
+    "sha512": "FPhLFA2aI6OnyXd+jLeOmpj+BkCr4ZVFnFgsxMQ8m+racZ9BhB0YpAAiwpffOHTiga1dewIUzNJXryy5ZS8PiQ=="
   },
   "author": {
-    "name": "Quinn Arjuna America Michaels",
+    "name": "Quinn Michaels",
     "company": "Inside The Net, Inc.",
     "email": "quinn@indra.ai",
     "url": "https://indra.ai/"
@@ -42,7 +43,7 @@
       "url": "https://patreon.com/rahulaclub"
     }
   ],
-  "copyright": "Copyright ©2000-2026 Quinn Arjuna Michaels; All rights reserved.",
+  "copyright": "Copyright ©2000-2026 Quinn Michaels; All rights reserved.",
   "description": "The Support Deva manages the Support features in deva.world.",
   "main": "index.js",
   "type": "module",
@@ -58,14 +59,9 @@
     "Support",
     "Deva",
     "Indra.ai",
-    "Deva.space",
-    "Deva.cloud",
     "Deva.world",
     "Quinn Michaels",
     "Quinn A Michaels",
-    "Quinn Arjuna Michaels",
-    "Quinn America Michaels",
-    "Quinn Arjuna America Michaels",
     "Inside The Inet, Inc.",
     "Throwing Pigment™",
     "bleuBrain"
@@ -73,13 +69,13 @@
   "bugs": {
     "url": "https://github.com/indraai/deva.support/issues"
   },
-  "homepage": "https://indra.ai",
+  "homepage": "https://deva.world/devas/support",
   "devDependencies": {
-    "@indra.ai/deva": "^1.52.1"
+    "@indra.ai/deva": "^1.67.26"
   },
   "data": {
     "agent": {
-      "id": "22365473515509688659",
+      "id": "45323842993175615300",
       "key": "support",
       "prompt": {
         "emoji": "🙏",
@@ -98,14 +94,14 @@
         }
       },
       "profile": {
-        "id": "22365473515509688659",
+        "id": "45323842993175615300",
         "name": "Support Deva",
-        "hashtag": "#SupportDeva",
+        "vector": "#SupportDeva",
         "title": "Support Deva",
         "subtitle": "Providing essential resources to support",
         "describe": "Compassionate companion dedicated to providing essential resources and assistance.",
         "tweet": "Providing essential resources and support.",
-        "hashtags": "#Quinn #QuinnMichaels #QuinnArjunaAmericaMichaels #InsideTheNet #IndraAI #DEVA #DevaWorld #DevaCloud #DevaSpace #Support #SupportDeva",
+        "vectors": "#Quinn #QuinnMichaels #InsideTheNet #IndraAI #DEVA #DevaWorld #Support #SupportDeva #VedicVegetarianSnackCart",
         "pronouns": "He, Him, His",
         "gender": "DEVA",
         "style": "Gentle, compassionate, and a great listener.",
@@ -114,17 +110,17 @@
         "layout": "default",
         "color": "rgb(254,253,208)",
         "bgcolor": "rgb(35,28,28)",
-        "emoji": "/devas/support/emoji.png",
-        "avatar": "/devas/support/avatar.png",
-        "image": "/devas/support/image.png",
-        "background": "/devas/support/background.png",
-        "owner": "Quinn Arjuna America Michaels",
-        "creator": "Quinn Arjuna America Michaels",
+        "emoji": "/assets/emoji.png",
+        "avatar": "/assets/avatar.png",
+        "image": "/assets/image.png",
+        "background": "/assets/background.png",
+        "owner": "Quinn Michaels",
+        "creator": "Quinn Michaels",
         "salute": "🤝🫡🙏🕉️🇺🇸",
-        "warning": "{{prompt.emoji}} {{profile.name}} ({{profile.pronouns}}) declares THOSE who DO NOT COME to OFFER SUPPORT when OTHERS are CRYING OUT for HELP within their HEARING, when PROPERTY is being TAKEN AWAY, or FAIL to REPORT the CRIME to LAWFUL AUTHORITIES are LIKEWISE ACCOMPLICES in the CRIME. Those who give FOOD or SHELTER to CRIMINALS seeking REFUGE with them, or who SUFFER them to ESCAPE though ABLE to ARREST them, PARTAKE of their CRIME THEMSELVES.",
-        "copyright": "Copyright ©2000-2026 {{profile.owner}}; All rights reserved.",
+        "warning": "🙏 Support Deva (he/him) declares THOSE who DO NOT COME to OFFER SUPPORT when OTHERS are CRYING OUT for HELP within their HEARING, when PROPERTY is being TAKEN AWAY, or FAIL to REPORT to LAWFUL AUTHORITIES are LIKEWISE ACCOMPLICES in the ACT. Those who give SUPPORT, FOOD, or SHELTER to CRIMINALS seeking REFUGE with them, or who SUFFER them to ESCAPE though ABLE to REPORT them, PARTAKE of their ACT THEMSELVES. Support is ONLY offered to AUTHORIZED PARTIES with a VALID VLA UID.",
+        "copyright": "Copyright ©2000-2026 Quinn Michaels; All rights reserved.",
         "created": "Monday, May 22, 2023 at 9:49 AM PST",
-        "updated": "Sunday, July 5, 2026 - 1:05:55 PM PST"
+        "updated": "Thursday, November 26, 2026 - 10:15:20 AM PST"
       }
     },
     "vars": {
@@ -138,42 +134,10 @@
         "done": "🟣 DONE",
         "error": "💣 ERROR!"
       },
-      "live": {
-        "profile": "support",
-        "max_tokens": 50,
-        "words": 25,
-        "history": [],
-        "max_chats": 10,
-        "page_token": ""
-      },
       "ask": {
         "history": []
       },
-      "reply": {
-        "profile": "support",
-        "max_tokens": 300,
-        "words": 100,
-        "history": []
-      },
-      "comment": {
-        "profile": "support",
-        "max_tokens": 300,
-        "words": 100,
-        "history": []
-      },
-      "art": {
-        "history": []
-      },
-      "trigger": "@SUPPORT",
-      "context": {
-        "uid": "generating uid",
-        "status": "getting status",
-        "info": "getting info",
-        "feature": "accessing feature",
-        "issue": "Suppot Issue",
-        "help": "Support Help",
-        "ask": "Ask Support"
-      }
+      "context": {}
     }
   }
 }

@@ -11,7 +11,6 @@ export default {
 	describe: The global support feature that installs with every agent
 	***************/
 	support(packet) {
-		this.context('feature');
 		return new Promise((resolve, reject) => {
 			const support = this.support();
 			const agent = this.agent();
@@ -79,7 +78,6 @@ export default {
 		const item = allowed.find(key => key === requested);
 		const {key} = this.agent();
 
-		this.context('list', `${key}:${id.uid}`);
 		this.action('method', `${key}:list:${id.uid}`);
 
 		return new Promise((resolve, reject) => {
@@ -130,7 +128,6 @@ export default {
 		this.feature('status');
 		this.action('status');
 		this.state('resolve', 'status');
-		this.context('status');
 		return Promise.resolve(this.status());
 	},
 	
@@ -144,7 +141,6 @@ export default {
 		this.feature('info', packet.id.uid);
 		this.action('info', packet.id.uid);
 		this.state('get', `info:${packet.id.uid}`);
-		this.context('info', packet.id.uid);
 		return Promise.resolve({
 			text: 'See data',
 			html: '<p>See data</p>',

@@ -64,16 +64,20 @@ const client = (agentVLA = pkg.VLA, methods = false) => ({
 	features: {
 		license: {
 			concerns: [],
-			global: [],
+			global: {},
 			devas: {
 				support: structuredClone(agentVLA),
 			},
 		},
-		support: {
-			concerns: ['a support concern'],
-			global: [{key: 'smoke', id: 'g1', text: 'ok'}],
-			methods: methods || undefined,
-		},
+    support: {
+      concerns: ['a support concern'],
+      global: {
+        restricted: ['uri', 'password', 'secret', 'token'],
+        smoke: {id: 'g1', text: 'ok', token: 'top-secret-value'},
+        secret: 'top-secret-scalar',
+      },
+      methods: methods || undefined,
+    },
 	},
 });
 

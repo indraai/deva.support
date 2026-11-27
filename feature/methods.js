@@ -31,7 +31,8 @@ export default {
 					}
 					global.push(`::end:global:${key}:${blockId}`);
 				} else {
-					global.push(`${key}: ${item}`);
+					const val = restricted.find(r => r === key.toLowerCase()) ? '*******' : item;
+					global.push(`${key}: ${val}`);
 				}
 			}
 

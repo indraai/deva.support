@@ -77,15 +77,14 @@ export default {
 					return resolve({
 						text: itm_msg,
 						html: `<p>${itm_msg}</p>`,
-						data: false,
+						data: false,::end
 					});
 				}
 								
 				const items = this[item]();
 				
 				const _items = [
-					'→',
-					`::begin:${key}:${id.uid}`,
+					`::begin:${key}:${item}:${id.uid}`,
 				];
 				for (let item in items.value) {
 					_items.push(`• ${item}: ${items.value[item]}`);
@@ -128,12 +127,16 @@ export default {
 	describe: Return the current info for the deva.
 	***************/
 	info(packet) {
-		this.zone('support');
-		this.feature('info');
-		this.action('info');
-		this.state('get', 'info');
-		this.context('info');
-		return Promise.resolve(this.info());
+		this.zone('support', `info:${packet.id.uid}`);
+		this.feature('info', packet.id.uid);
+		this.action('info', packet.id.uid);
+		this.state('get', `info:${packet.id.uid}`);
+		this.context('info', packet.id.uid);
+		return Promise.resolve({
+			text: 'See data',
+			html: '<p>See data</p>',
+			data: this.info(),
+		});
 	},
 	
 	/**************
@@ -195,7 +198,9 @@ export default {
 					html: parsed.a.html,
 					data: parsed.a.data,
 				});
-			}).catch(reject);
+			}).catch(err => {
+				return this.err(err, packet, reject);
+			});
 		});
 	}
 }

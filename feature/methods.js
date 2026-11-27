@@ -61,14 +61,26 @@ export default {
 	list(packet) {
 		const {id, q} = packet;
 		const {params} = q.meta;
-		const item = params[1];
+		const allowed = ['contexts', 'features', 'zones', 'actions', 'states', 'intents', 'beliefs'];
+		const requested = (params[1] || q.text || allowed[1]).trim().toLowerCase();
+		const item = allowed.find(key => key === requested);
+		
+				
 		const {key} = this.agent();
-
-		this.context('features', `${key}:${item}:${id.uid}`);
-		this.action('method', `${key}:features:${id.uid}`);
+		this.action('method', `${key}:list:${id.uid}`);
 
 		return new Promise((resolve, reject) => {
 			try {
+				
+				if (!item) {
+					const itm_msg = `Invalid list item: ${requested || '(none)'}`;
+					return resolve({
+						text: itm_msg,
+						html: `<p>${itm_msg}</p>`,
+						data: false,
+					});
+				}
+								
 				const items = this[item]();
 				
 				const _items = [

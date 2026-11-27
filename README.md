@@ -35,14 +35,16 @@ Support Deva reads two features from the client you pass to `init()`. The featur
 "features": {
 	"license": {
 		"concerns": [],
-		"global": [],
+		"global": {},
 		"devas": {
 			"support": {"uid": "45323842993175615300"}
 		}
 	},
 	"support": {
 		"concerns": [],
-		"global": []
+		"global": {
+			"restricted": ["password", "secret", "token", "uri", "machine", "hostname"]
+		}
 	}
 }
 ```
@@ -120,12 +122,14 @@ const client = {
 	features: {
 		license: {
 			concerns: [],
-			global: [],
+			global: {},
 			devas: {support: pkg.VLA},
 		},
 		support: {
 			concerns: [],
-			global: [],
+			global: {
+				restricted: ['password', 'secret', 'token', 'uri', 'machine', 'hostname'],
+			},
 			methods: featureMethods,
 		},
 	},
@@ -138,12 +142,13 @@ After `init`, call the bound methods on `SupportDeva.methods`.
 
 | Method | What it does |
 | --- | --- |
-| `support(packet)` | Sets the feature context, reads `this.support()`, and builds a Feecting view of the client, the concerns list, and each global item. Global begin and end tags use `item.key` and `item.id`. The client end tag uses `support.client_id`. It then asks Feecting to parse that view (`#feecting parse`) and returns `{text, html, data}`, where `data` is `support.concerns`. If the Feecting parse fails, it returns `this.err(err, packet, reject)`. |
-| `list(packet)` | Reads `packet.q.meta.params[1]` as the name of a function on the Deva, calls `this[item]()`, and lists the keys of the returned `value` object. It asks Feecting to parse the listing and returns `{text, html, data}` from that parse. The end tag is `::end:<agent.key>:<params[1]>:<packet.id.uid>`. If the named function is missing, or the Feecting parse fails, it returns `this.err(err, packet, reject)`. The question catch does not shadow `reject` and does not hang. |
+| `support(packet)` | Sets the feature context, reads `this.support()`, and builds a Feecting view of the client, the concerns list, and each entry in the `support.global` object (skipping `restricted`). Global begin and end tags use the property `key` and `item.id || key`, and any field listed in `support.global.restricted` is masked as `*******`. The client end tag uses `support.client_id`. It then asks Feecting to parse that view (`#feecting parse`) and returns `{text, html, data}`, where `data` is `support.concerns`. If the Feecting parse fails, it returns `this.err(err, packet, reject)`. |
+| `list(packet)` | Reads `packet.q.meta.params[1]` against the allowlist (`contexts`, `features`, `zones`, `actions`, `states`, `intents`, `beliefs`). For a non-allowlisted item it resolves `{text: 'Invalid item', html: '<p>Invalid item</p>', data: false}`. For an allowlisted item it calls `this[item]()`, lists the keys of the returned `value` object, asks Feecting to parse the listing with `::begin`/`::end:<agent.key>:<params[1]>:<packet.id.uid>`, and returns `{text, html, data}`. If the Feecting parse fails, it returns `this.err(err, packet, reject)`. |
 | `status(packet)` | Sets the support zone, then the status feature, action, state, and context, and returns `Promise.resolve(this.status())`. `this.status()` is the string `Support Deva active since <date>`. |
-| `info(packet)` | Sets the support zone, then the info feature, action, state, and context, and returns `Promise.resolve(this.info())`, the live info packet for this Deva. |
+| `info(packet)` | Sets the support zone, then the info feature, action, state, and context, and returns `Promise.resolve({text: 'See data', html: '<p>See data</p>', data: this.info()})`. |
 | `devas(packet)` | Builds a Feecting menu of `this.devas`, with a hidden block for `{{profile.color}}`, `{{profile.bgcolor}}`, `{{profile.background}}`, and `{{profile.copyright}}`. It asks Feecting to parse that view and returns `{text, html, data}`. If the Feecting parse fails, it returns `this.err(err, packet, reject)`. |
-| `help(packet)` | Calls `this.help(packet.q.text, this.info().dir)` to load the help file, asks Feecting to parse it, and returns `{text, html, data}`. If the help load or the Feecting parse fails, the promise rejects. |
+| `help(packet)` | Calls `this.help(packet.q.text, this.info().dir)` to load the help file, asks Feecting to parse it, and returns `{text, html, data}`. If the help load or the Feecting parse fails, it returns `this.err(err, packet, reject)`. |
+
 
 The success paths for `support`, `list`, `devas`, and `help` need Feecting.
 
@@ -188,16 +193,16 @@ The tests build a stub client in code from the core VLA in `@indra.ai/deva/packa
 - support help pages match the files and carry the package license
 - `feature/methods.js` exports only `support`, `list`, `status`, `info`, `devas`, and `help`
 - feature methods from `feature/methods.js` load at runtime
-- `methods.support` returns the parsed concerns and id end tags
+- `methods.support` returns the parsed concerns, id end tags, and masks restricted global fields as `*******`
 - `methods.support` routes a question rejection through `this.err`
 - `methods.list` returns the parsed listing and keeps `params[1]` in the end tag
 - `methods.list` routes a question rejection through `this.err` without hanging
-- `methods.list` routes a missing item through `this.err`
-- `methods.status` and `methods.info` return the live Deva status and info
+- `methods.list` resolves an invalid item message for non-allowlisted items
+- `methods.status` returns the live Deva status and `methods.info` returns `{text, html, data}` with `this.info()`
 - `methods.devas` returns the parsed menu
 - `methods.devas` routes a question rejection through `this.err`
 - `methods.help` returns the parsed help page
-- `methods.help` rejects when question fails
+- `methods.help` routes a question rejection through `this.err`
 - support stops through the full chain
 - support refuses to start with a bad agent VLA
 

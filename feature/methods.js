@@ -15,19 +15,27 @@ export default {
 		return new Promise((resolve, reject) => {
 			const support = this.support();
 			const agent = this.agent();
+
 			const global = [];
-			support.global.forEach((item,index) => {
-				global.push(`::begin:global:${item.key}:${item.id}`);
-				for (let x in item) {
-					global.push(`${x}: ${item[x]}`);
+			for (let key in support.global) {
+				const item = support.global[key];
+				if (item && typeof item === 'object') {
+					const blockId = item.id || key;
+					global.push(`::begin:global:${key}:${blockId}`);
+					for (let x in item) {
+						global.push(`${x}: ${item[x]}`);
+					}
+					global.push(`::end:global:${key}:${blockId}`);
+				} else {
+					global.push(`${key}: ${item}`);
 				}
-				global.push(`::end:global:${item.key}:${item.id}`);
-			});
+			}
+
 			const concerns = [];
 			support.concerns.forEach((item, index) => {
 				concerns.push(`${index + 1}. ${item}`);
 			})
-			
+
 			const info = [
 				'::BEGIN:SUPPORT',
 				'### Client',
@@ -64,9 +72,9 @@ export default {
 		const allowed = ['contexts', 'features', 'zones', 'actions', 'states', 'intents', 'beliefs'];
 		const requested = (params[1] || q.text || allowed[1]).trim().toLowerCase();
 		const item = allowed.find(key => key === requested);
-		
-				
 		const {key} = this.agent();
+
+		this.context('list', `${key}:${id.uid}`);
 		this.action('method', `${key}:list:${id.uid}`);
 
 		return new Promise((resolve, reject) => {
@@ -77,7 +85,7 @@ export default {
 					return resolve({
 						text: itm_msg,
 						html: `<p>${itm_msg}</p>`,
-						data: false,::end
+						data: false,
 					});
 				}
 								

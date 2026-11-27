@@ -225,25 +225,30 @@ test('feature methods from feature/methods.js load at runtime', async () => {
 });
 
 test('methods.support returns the parsed concerns and id end tags', async () => {
-	assert.ok(featureReady, 'feature instance is ready');
-	const orig = FEATURE.question.bind(FEATURE);
-	let asked = '';
-	FEATURE.question = async text => {
-		asked = String(text);
-		return parseAnswer('parsed-support', '<p>support</p>', {ok: true});
-	};
-	try {
-		const out = await FEATURE.methods.support(packet(FEATURE));
-		assert.equal(out.text, 'parsed-support');
-		assert.equal(out.html, '<p>support</p>');
-		assert.deepEqual(out.data, ['a support concern'], 'data is the support concerns');
-		assert.ok(asked.includes(`${FEATURE.askChr}feecting parse `), 'asks Feecting to parse the support view');
-		assert.ok(asked.includes('::end:global:smoke:g1'), 'global end tag uses item.key and item.id');
-		assert.match(asked, /::end:client:[^\n]+/, 'client end tag uses support.client_id');
-		assert.match(asked, /::end:global:smoke:g1(?:\n|$)/, 'global end tag is item.id with no hash suffix');
-	} finally {
-		FEATURE.question = orig;
-	}
+  assert.ok(featureReady, 'feature instance is ready');
+  const orig = FEATURE.question.bind(FEATURE);
+  let asked = '';
+  FEATURE.question = async text => {
+    asked = String(text);
+    return parseAnswer('parsed-support', '<p>support</p>', {ok: true});
+  };
+  try {
+    const out = await FEATURE.methods.support(packet(FEATURE));
+    assert.equal(out.text, 'parsed-support');
+    assert.equal(out.html, '<p>support</p>');
+    assert.deepEqual(out.data, ['a support concern'], 'data is the support concerns');
+    assert.ok(asked.includes(`${FEATURE.askChr}feecting parse `), 'asks Feecting to parse the support view');
+    assert.ok(asked.includes('::end:global:smoke:g1'), 'global end tag uses key and item.id');
+    assert.match(asked, /::end:client:[^\n]+/, 'client end tag uses support.client_id');
+    assert.match(asked, /::end:global:smoke:g1(?:\n|$)/, 'global end tag is item.id with no hash suffix');
+    assert.ok(asked.includes('token: *******'), 'nested restricted fields are masked with *******');
+    assert.ok(asked.includes('secret: *******'), 'top-level restricted fields are masked with *******');
+    assert.ok(!asked.includes('top-secret-value'), 'nested restricted value does not leak');
+    assert.ok(!asked.includes('top-secret-scalar'), 'top-level restricted value does not leak');
+    assert.ok(!asked.includes('::begin:global:restricted:'), 'restricted list itself is not printed');
+  } finally {
+    FEATURE.question = orig;
+  }
 });
 
 test('methods.support routes a question rejection through this.err', async () => {
@@ -276,99 +281,99 @@ test('methods.support routes a question rejection through this.err', async () =>
 });
 
 test('methods.list returns the parsed listing and keeps params[1] in the end tag', async () => {
-	FEATURE.listSource = () => ({value: {alpha: 'one', beta: 'two'}});
-	const orig = FEATURE.question.bind(FEATURE);
-	let asked = '';
-	FEATURE.question = async text => {
-		asked = String(text);
-		return parseAnswer('parsed-list', '<p>list</p>', {keys: ['alpha', 'beta']});
-	};
-	const p = packet(FEATURE, 'list', ['list', 'listSource']);
-	try {
-		const out = await FEATURE.methods.list(p);
-		assert.equal(out.text, 'parsed-list');
-		assert.equal(out.html, '<p>list</p>');
-		assert.deepEqual(out.data, {keys: ['alpha', 'beta']});
-		assert.ok(asked.includes('• alpha: one'), 'lists the value keys');
-		assert.ok(asked.includes('• beta: two'), 'lists every value key');
-		assert.ok(asked.includes(`::end:support:listSource:${p.id.uid}`), 'end tag uses params[1], not the last loop key');
-	} finally {
-		FEATURE.question = orig;
-		delete FEATURE.listSource;
-	}
+  const origFeatures = FEATURE.features.bind(FEATURE);
+  const origQuestion = FEATURE.question.bind(FEATURE);
+  FEATURE.features = () => ({value: {alpha: 'one', beta: 'two'}});
+  let asked = '';
+  FEATURE.question = async text => {
+    asked = String(text);
+    return parseAnswer('parsed-list', '<p>list</p>', {keys: ['alpha', 'beta']});
+  };
+  const p = packet(FEATURE, 'list', ['list', 'features']);
+  try {
+    const out = await FEATURE.methods.list(p);
+    assert.equal(out.text, 'parsed-list');
+    assert.equal(out.html, '<p>list</p>');
+    assert.deepEqual(out.data, {keys: ['alpha', 'beta']});
+    assert.ok(asked.includes('• alpha: one'), 'lists the value keys');
+    assert.ok(asked.includes('• beta: two'), 'lists every value key');
+    assert.ok(asked.includes(`::begin:support:features:${p.id.uid}`), 'begin tag uses key, item, and uid');
+    assert.ok(asked.includes(`::end:support:features:${p.id.uid}`), 'end tag uses key, item, and uid');
+  } finally {
+    FEATURE.features = origFeatures;
+    FEATURE.question = origQuestion;
+  }
 });
 
 test('methods.list routes a question rejection through this.err without hanging', async () => {
-	FEATURE.listSource = () => ({value: {alpha: 'one'}});
-	const origQuestion = FEATURE.question.bind(FEATURE);
-	const origErr = FEATURE.err.bind(FEATURE);
-	const calls = [];
-	FEATURE.question = async () => {
-		throw new Error('list-feecting-fail');
-	};
-	FEATURE.err = (err, pkt, reject) => {
-		calls.push({message: err.message, hasReject: typeof reject === 'function'});
-		return origErr(err, pkt, reject);
-	};
-	const unhandled = [];
-	const onUnhandled = err => unhandled.push(err);
-	process.on('unhandledRejection', onUnhandled);
-	try {
-		let timer;
-		const outcome = await withMutedLog(() => Promise.race([
-			FEATURE.methods.list(packet(FEATURE, 'list', ['list', 'listSource'])).then(
-				() => 'resolved',
-				err => err
-			),
-			new Promise((_, reject) => {
-				timer = setTimeout(() => reject(new Error('TIMEOUT')), 8000);
-			}),
-		]).finally(() => clearTimeout(timer)));
-		assert.ok(outcome instanceof Error, 'list rejects');
-		assert.equal(outcome.message, 'list-feecting-fail', 'list rejects with the question error');
-		assert.equal(calls.length, 1, 'this.err is called once');
-		assert.equal(calls[0].hasReject, true, 'this.err receives the outer reject');
-		assert.equal(unhandled.length, 0, 'no unhandled rejection');
-	} finally {
-		process.off('unhandledRejection', onUnhandled);
-		FEATURE.question = origQuestion;
-		FEATURE.err = origErr;
-		delete FEATURE.listSource;
-	}
+  const origFeatures = FEATURE.features.bind(FEATURE);
+  const origQuestion = FEATURE.question.bind(FEATURE);
+  const origErr = FEATURE.err.bind(FEATURE);
+  const calls = [];
+  FEATURE.features = () => ({value: {alpha: 'one'}});
+  FEATURE.question = async () => {
+    throw new Error('list-feecting-fail');
+  };
+  FEATURE.err = (err, pkt, reject) => {
+    calls.push({message: err.message, hasReject: typeof reject === 'function'});
+    return origErr(err, pkt, reject);
+  };
+  const unhandled = [];
+  const onUnhandled = err => unhandled.push(err);
+  process.on('unhandledRejection', onUnhandled);
+  try {
+    let timer;
+    const outcome = await withMutedLog(() => Promise.race([
+      FEATURE.methods.list(packet(FEATURE, 'list', ['list', 'features'])).then(
+        () => 'resolved',
+        err => err
+      ),
+      new Promise((_, reject) => {
+        timer = setTimeout(() => reject(new Error('TIMEOUT')), 8000);
+      }),
+    ]).finally(() => clearTimeout(timer)));
+    assert.ok(outcome instanceof Error, 'list rejects');
+    assert.equal(outcome.message, 'list-feecting-fail', 'list rejects with the question error');
+    assert.equal(calls.length, 1, 'this.err is called once');
+    assert.equal(calls[0].hasReject, true, 'this.err receives the outer reject');
+    assert.equal(unhandled.length, 0, 'no unhandled rejection');
+  } finally {
+    process.off('unhandledRejection', onUnhandled);
+    FEATURE.features = origFeatures;
+    FEATURE.question = origQuestion;
+    FEATURE.err = origErr;
+  }
 });
 
-test('methods.list routes a missing item through this.err', async () => {
-	const origErr = FEATURE.err.bind(FEATURE);
-	const calls = [];
-	FEATURE.err = (err, pkt, reject) => {
-		calls.push({name: err.name, hasPacket: !!pkt, hasReject: typeof reject === 'function'});
-		return origErr(err, pkt, reject);
-	};
-	try {
-		await withMutedLog(async () => {
-			await assert.rejects(
-				FEATURE.methods.list(packet(FEATURE, 'list', ['list', 'notAMethod'])),
-				err => err instanceof TypeError,
-				'list rejects when this[item] is not a function'
-			);
-		});
-		assert.equal(calls.length, 1, 'this.err is called once');
-		assert.equal(calls[0].hasPacket, true);
-		assert.equal(calls[0].hasReject, true);
-	} finally {
-		FEATURE.err = origErr;
-	}
+test('methods.list resolves an invalid item message for non-allowlisted items', async () => {
+  const origErr = FEATURE.err.bind(FEATURE);
+  const calls = [];
+  FEATURE.err = (err, pkt, reject) => {
+    calls.push(err);
+    return origErr(err, pkt, reject);
+  };
+  try {
+    const out = await FEATURE.methods.list(packet(FEATURE, 'list', ['list', 'notAMethod']));
+    assert.equal(out.text, 'Invalid list item: notamethod');
+    assert.equal(out.html, '<p>Invalid list item: notamethod</p>');
+    assert.equal(out.data, false);
+    assert.equal(calls.length, 0, 'this.err is not called for invalid list items');
+  } finally {
+    FEATURE.err = origErr;
+  }
 });
 
 test('methods.status and methods.info return the live Deva status and info', async () => {
-	const status = await FEATURE.methods.status(packet(FEATURE));
-	assert.equal(typeof status, 'string', 'methods.status returns a string');
-	assert.match(status, /^Support Deva active since /, 'methods.status names the Deva and the start time');
-	const info = await FEATURE.methods.info(packet(FEATURE));
-	assert.equal(info.name, '@indra.ai/deva.support');
-	assert.equal(info.version, pkg.version);
-	assert.equal(info.id, pkg.id);
-	assertTiers(info, 'methods.info()');
+  const status = await FEATURE.methods.status(packet(FEATURE));
+  assert.equal(typeof status, 'string', 'methods.status returns a string');
+  assert.match(status, /^Support Deva active since /, 'methods.status names the Deva and the start time');
+  const info = await FEATURE.methods.info(packet(FEATURE));
+  assert.equal(info.text, 'See data');
+  assert.equal(info.html, '<p>See data</p>');
+  assert.equal(info.data.name, '@indra.ai/deva.support');
+  assert.equal(info.data.version, pkg.version);
+  assert.equal(info.data.id, pkg.id);
+  assertTiers(info.data, 'methods.info()');
 });
 
 test('methods.devas returns the parsed menu', async () => {
@@ -437,19 +442,21 @@ test('methods.help returns the parsed help page', async () => {
 });
 
 test('methods.help rejects when question fails', async () => {
-	const orig = FEATURE.question.bind(FEATURE);
-	FEATURE.question = async () => {
-		throw new Error('help-feecting-fail');
-	};
-	try {
-		await assert.rejects(
-			FEATURE.methods.help(packet(FEATURE, 'main')),
-			err => err.message === 'help-feecting-fail',
-			'help rejects with the question error'
-		);
-	} finally {
-		FEATURE.question = orig;
-	}
+  const orig = FEATURE.question.bind(FEATURE);
+  FEATURE.question = async () => {
+    throw new Error('help-feecting-fail');
+  };
+  try {
+    await withMutedLog(async () => {
+      await assert.rejects(
+        FEATURE.methods.help(packet(FEATURE, 'main')),
+        err => err.message === 'help-feecting-fail',
+        'help rejects with the question error'
+      );
+    });
+  } finally {
+    FEATURE.question = orig;
+  }
 });
 
 // the refusal check loads a fresh Support Deva instance from the same file, so it starts from a clean state.

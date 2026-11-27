@@ -17,13 +17,17 @@ export default {
 			const agent = this.agent();
 
 			const global = [];
+			const {restricted} = support.global
 			for (let key in support.global) {
+				if (key === 'restricted') continue; // continue if key restricted.
+				
 				const item = support.global[key];
 				if (item && typeof item === 'object') {
 					const blockId = item.id || key;
 					global.push(`::begin:global:${key}:${blockId}`);
 					for (let x in item) {
-						global.push(`${x}: ${item[x]}`);
+						const val = restricted.find(r => r === x.toLowerCase()) ? '*******' : item[x];
+						global.push(`${x}: ${val}`);
 					}
 					global.push(`::end:global:${key}:${blockId}`);
 				} else {

@@ -86,6 +86,18 @@ function parseAnswer(text = 'parsed', html = '<p>ok</p>', data = {ok: true}) {
 	return {a: {text, html, data}};
 }
 
+// Support Deva onError console.logs every error that this.err hands it.
+// the error-path tests throw on purpose, so mute console.log while they run.
+async function withMutedLog(fn) {
+	const orig = console.log;
+	console.log = () => {};
+	try {
+		return await fn();
+	} finally {
+		console.log = orig;
+	}
+}
+
 let FEATURE = null;
 let featureReady = false;
 
@@ -246,11 +258,13 @@ test('methods.support routes a question rejection through this.err', async () =>
 		return origErr(err, pkt, reject);
 	};
 	try {
-		await assert.rejects(
-			FEATURE.methods.support(packet(FEATURE)),
-			err => err.message === 'feecting-parse-fail',
-			'support rejects with the question error'
-		);
+		await withMutedLog(async () => {
+			await assert.rejects(
+				FEATURE.methods.support(packet(FEATURE)),
+				err => err.message === 'feecting-parse-fail',
+				'support rejects with the question error'
+			);
+		});
 		assert.equal(calls.length, 1, 'this.err is called once');
 		assert.equal(calls[0].message, 'feecting-parse-fail');
 		assert.equal(calls[0].hasPacket, true, 'this.err receives the packet');
@@ -301,7 +315,7 @@ test('methods.list routes a question rejection through this.err without hanging'
 	process.on('unhandledRejection', onUnhandled);
 	try {
 		let timer;
-		const outcome = await Promise.race([
+		const outcome = await withMutedLog(() => Promise.race([
 			FEATURE.methods.list(packet(FEATURE, 'list', ['list', 'listSource'])).then(
 				() => 'resolved',
 				err => err
@@ -309,7 +323,7 @@ test('methods.list routes a question rejection through this.err without hanging'
 			new Promise((_, reject) => {
 				timer = setTimeout(() => reject(new Error('TIMEOUT')), 8000);
 			}),
-		]).finally(() => clearTimeout(timer));
+		]).finally(() => clearTimeout(timer)));
 		assert.ok(outcome instanceof Error, 'list rejects');
 		assert.equal(outcome.message, 'list-feecting-fail', 'list rejects with the question error');
 		assert.equal(calls.length, 1, 'this.err is called once');
@@ -331,11 +345,13 @@ test('methods.list routes a missing item through this.err', async () => {
 		return origErr(err, pkt, reject);
 	};
 	try {
-		await assert.rejects(
-			FEATURE.methods.list(packet(FEATURE, 'list', ['list', 'notAMethod'])),
-			err => err instanceof TypeError,
-			'list rejects when this[item] is not a function'
-		);
+		await withMutedLog(async () => {
+			await assert.rejects(
+				FEATURE.methods.list(packet(FEATURE, 'list', ['list', 'notAMethod'])),
+				err => err instanceof TypeError,
+				'list rejects when this[item] is not a function'
+			);
+		});
 		assert.equal(calls.length, 1, 'this.err is called once');
 		assert.equal(calls[0].hasPacket, true);
 		assert.equal(calls[0].hasReject, true);
@@ -387,11 +403,13 @@ test('methods.devas routes a question rejection through this.err', async () => {
 		return origErr(err, pkt, reject);
 	};
 	try {
-		await assert.rejects(
-			FEATURE.methods.devas(packet(FEATURE)),
-			err => err.message === 'devas-feecting-fail',
-			'devas rejects with the question error'
-		);
+		await withMutedLog(async () => {
+			await assert.rejects(
+				FEATURE.methods.devas(packet(FEATURE)),
+				err => err.message === 'devas-feecting-fail',
+				'devas rejects with the question error'
+			);
+		});
 		assert.equal(calls.length, 1, 'this.err is called once');
 		assert.equal(calls[0].hasReject, true);
 	} finally {
